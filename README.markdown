@@ -63,7 +63,7 @@ response, the xml sent and the url it was posted to.
 
 From the Rails console it can be accessed like such:
 
-    ActiveMerchant::Billing::PaypalAdaptivePaymentsGateway
+    ActiveMerchant::Billing::PaypalAdaptivePaymentGateway
 
 ## TODO
 
