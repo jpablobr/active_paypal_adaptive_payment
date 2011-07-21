@@ -16,7 +16,9 @@ This library is meant to interface with PayPal web services Adaptive Payment Gat
 
 ## Installation
 
-    git clone git://github.com/jpablobr/active_paypal_adaptive_payment.git
+Add the following line to your app Gemfile:
+
+    gem "active_paypal_adaptive_payment", "~> 0.1.0"
 
 ## Implementation
 
