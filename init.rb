@@ -1,0 +1,1 @@
+require 'active_paypal_adaptive_payments'
