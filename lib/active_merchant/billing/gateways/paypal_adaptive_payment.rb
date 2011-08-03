@@ -6,7 +6,7 @@ require dir + '/paypal_adaptive_payments/exceptions.rb'
 require dir + '/paypal_adaptive_payments/adaptive_payment_response.rb'
 require 'json/add/rails'
 
-module ActiveMerchant; module Billingl class PaypalAdaptivePaymentGateway < Gateway
+module ActiveMerchant; module Billing; class PaypalAdaptivePaymentGateway < Gateway
 
   include AdaptivePaymentResponses
   include AdaptiveUtils
@@ -24,7 +24,7 @@ module ActiveMerchant; module Billingl class PaypalAdaptivePaymentGateway < Gate
   self.display_name = 'Paypal Adaptive Payments'
 
   attr_accessor :config_path
-  @config_path = "#{RAILS_ROOT}/config/paypal.yml"
+  @config_path = "#{::Rails.root.to_s}/config/paypal.yml"
 
   def initialize(options = {})
     @config = {}
