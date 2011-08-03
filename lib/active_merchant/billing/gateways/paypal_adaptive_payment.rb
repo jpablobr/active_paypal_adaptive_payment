@@ -6,7 +6,7 @@ require dir + '/paypal_adaptive_payments/exceptions.rb'
 require dir + '/paypal_adaptive_payments/adaptive_payment_response.rb'
 require 'json/add/rails'
 
-module ActiveMerchant; module Billingl class PaypalAdaptivePaymentGateway < Gateway
+module ActiveMerchant; module Billing; class PaypalAdaptivePaymentGateway < Gateway
 
   include AdaptivePaymentResponses
   include AdaptiveUtils
