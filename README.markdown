@@ -73,6 +73,7 @@ From the Rails console it can be accessed like such:
 
 * Jose Pablo Barrantes (<http://jpablobr.com/>)
 * Zarne Dravitzki (<http://github.com/zarno>)
+* LeviRosol (<https://github.com/LeviRosol>)
 
 ## Other previous contributors where some code was taken from.
 
