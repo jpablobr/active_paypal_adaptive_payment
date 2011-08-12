@@ -6,6 +6,7 @@ This library is meant to interface with PayPal web services Adaptive Payment Gat
 
 ![Active PayPal Adaptive Payment](https://github.com/jpablobr/active_paypal_adaptive_payment/raw/master/doc/split.jpg)
 
+[iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https://www.x.com/docs/DOC-2505)
 ## Supported
 
 * payments
@@ -18,23 +19,26 @@ This library is meant to interface with PayPal web services Adaptive Payment Gat
 
 Add the following line to your app Gemfile:
 
-    gem "active_paypal_adaptive_payment", "~> 0.1.0"
+    gem "active_paypal_adaptive_payment"
 
 ## Implementation
 
-In your { payment/order }_controller.rb
+### Pre-approved paymen
 
-    def gateway
-      @gateway ||= PaypalAdaptivePaymentGateway.new(
-       :login => 'your_email',
-       :password => 'your_password',
-       :signature => ' your_signature',
-       :appid => 'your_app_id'
-      )
-    end
+    gateway.preapprove_payment (
+      :return_url => "returnURL",
+      :cancel_url => "cancelURL",
+      :senderEmail =>"email address of sender",
+      :start_date => Time.now,
+      :end_date => Time.now + (60*60*24) * 30,
+      :currency_code =>"currency code",
+      :max_amount => "maxTotalAmountOfAllPayments",
+      :maxNumberOfPayments => "maxNumberOfPayments" )
 
-## Payment process
+### Cancel pre-approved payment
 
+    gateway.cancel_preapproval(:preapproval_key => "preapprovalkey"
+)
 ### Chained payments
 
     def checkout
@@ -63,11 +67,15 @@ response, the xml sent and the url it was posted to.
 
 From the Rails console it can be accessed like such:
 
-    ActiveMerchant::Billing::PaypalAdaptivePaymentGateway
+    ActiveMerchant::Billing::PaypalAdaptivePayment
+
+`PaypalAdaptivePayment#debug` or `AdaptivePaymentResponse#debug` return the raw
+xml request, raw json response and the URL of the endpoint.
 
 ## TODO
 
-* Better documentation
+* Documentation
+* More tests
 
 ## Contributors
 

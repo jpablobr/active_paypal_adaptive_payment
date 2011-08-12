@@ -1,56 +1,26 @@
 require 'rake'
 require 'rake/clean'
 require 'rake/testtask'
-require 'rake/gempackagetask'
-
-desc 'Run unit tests by default (and not remote tests)'
-task :default => 'test:units'
-
-desc 'Run all tests, including remote tests'
-task :test => ['test:units','test:remote']
+require 'yard'
 
 gemspec = eval(File.read('active_paypal_adaptive_payment.gemspec'))
 
-Rake::GemPackageTask.new(gemspec) do |pkg|
-  pkg.gem_spec = gemspec
-end
-
 desc "Default Task"
-task :default => 'test:units'
-task :test => ['test:units','test:remote']
+task :default => 'test'
 
-namespace :test do
-  Rake::TestTask.new(:units) do |t|
-    t.libs << "test"
-    t.pattern = 'test/unit/**/*_test.rb'
-    t.verbose = true
-  end
-
-  Rake::TestTask.new(:remote) do |t|
-    t.libs << "test"
-    t.pattern = 'test/remote/*_test.rb'
-    t.verbose = true
-  end
+Rake::TestTask.new(:test) do |test|
+  test.libs << 'lib' << 'test'
+  test.pattern = 'test/*.rb'
+  test.verbose = true
 end
 
-desc "Validate the gemspec"
-task :gemspec do
-  gemspec.validate
+desc "Builds the gem"
+task :gem do
+  Gem::Builder.new(eval(File.read('active_paypal_adaptive_payment.gemspec'))).build
 end
 
-task :package => :gemspec
-
-desc "Build and install the gem"
-task :install => :package do
-  sh %{gem install pkg/#{gemspec.name}-#{gemspec.version}}
-end
-
-desc "Uninstall gem"
-task :uninstall => [ :clean ] do
-  sh %{gem uninstall #{gemspec.name}}
-end
-
-desc "Release #{gemspec.name} gem (#{gemspec.version})"
-task :release => [ :test, :package ] do
-  sh %{gem push pkg/#{gemspec.name}-#{gemspec.version}.gem}
+YARD::Rake::YardocTask.new do |t|
+  t.files   = ['lib/**/*.rb', 'readme.md', 'CHANGELOG', 'MIT-LICENSE']
+  t.options += ['--any', '--extra', '--opts']
+  t.options += ['--verbose', '--title', "Active Paypal Adaptive Payment Documentation"]
 end

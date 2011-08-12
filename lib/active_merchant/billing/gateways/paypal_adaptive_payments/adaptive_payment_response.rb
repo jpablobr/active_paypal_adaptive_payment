@@ -1,134 +1,52 @@
-module ActiveMerchant; module Billing;  module AdaptivePaymentResponses
+require 'multi_json'
+require 'hashie'
+require 'rash'
 
-class AdaptivePaypalSuccessResponse
+module ActiveMerchant
+  module Billing
+    class AdaptivePaymentResponse
 
-  REDIRECT_URL = 'https://www.paypal.com/webscr?cmd=_ap-payment&paykey='
-  TEST_REDIRECT_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey='
+      REDIRECT_URL = 'https://www.paypal.com/webscr?cmd=_ap-payment&paykey='
+      TEST_REDIRECT_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey='
 
-  attr_reader :paykey
+      SUCCESS = 'Success'.freeze
 
-  def initialize json
-    @paykey = json['payKey']
-    @params = json
-  end
+      attr_reader :json
+      alias :raw :json
 
-  def redirect_url_for
-    Base.gateway_mode == :test ? (TEST_REDIRECT_URL + @paykey) : (REDIRECT_URL + @paykey)
-  end
+      def initialize(json)
+        @json = json
+        @response_rash = Hashie::Rash.new(MultiJson.decode(json))
+      end
 
-  def ack
-    @params['responseEnvelope']['ack']
-  end
+      def method_missing(method, *args, &block)
+        @response_rash.send(method, *args, &block)
+      end
 
-  def paymentExecStatus
-    @params['paymentExecStatus']
-  end
+      def redirect_url_for
+        Base.gateway_mode == :test ? (TEST_REDIRECT_URL + pay_key) : (REDIRECT_URL + pay_key)
+      end
 
-  def transactionStatus
-    @params['transactionStatus']
-  end
+      def ack
+        response_envelope.ack
+      end
 
-  def senderEmail
-    @params['senderEmail']
-  end
+      def timestamp
+        response_envelope.timestamp
+      end
 
-  def actionType
-    @params['actionType']
-  end
+      def build
+        response_envelope.build
+      end
 
-  def feesPayer
-    @params['feesPayer']
-  end
+      def correlation_id
+        response_envelope.correlation_id
+      end
+      alias :correlationId :correlation_id
 
-  def currencyCode
-    @params['currencyCode']
-  end
-
-  def payKey
-    @params['payKey']
-  end
-
-  def correlationId
-    @params['responseEnvelope']['correlationId']
-  end
-
-  def build
-    @params['responseEnvelope']['build']
-  end
-
-  def refundInfoList
-    @params['refundInfoList']
-  end
-
-  def preapprovalKey
-    @params['preapprovalKey']
-  end
-
-  def curPaymentsAmount
-    @params['curPaymentsAmount']
-  end
-
-  def status
-    @params['status']
-  end
-
-  def curPeriodAttempts
-    @params['curPeriodAttempts']
-  end
-
-  def approved
-    @params['approved']
-  end
-
-  def method_missing name
-    begin
-      @params[name.to_s]
-    rescue
-      raise AttributenotFound
+      def success?
+        ack == SUCCESS
+      end
     end
   end
-
-  def [](key)
-    return @params[key] if @params.include? key
-    raise AttributenotFound
-  end
-
-  def status
-    @params['status']
-  end
-
 end
-
-class AdaptivePaypalErrorResponse
-
-  def initialize error
-    @raw = error
-    @errlist = ActiveSupport::JSON.decode(error)
-  end
-
-  def debug
-    @raw.inspect
-  end
-
-  def ack
-    @raw['responseEnvelope']['ack']
-  end
-
-  def timestamp
-    @raw['responseEnvelope']['timestamp']
-  end
-
-  def build
-    @raw['responseEnvelope']['build']
-  end
-
-  def correlationId
-    @raw['responseEnvelope']['correlationId']
-  end
-
-  def errormessage
-    @errlist['error']
-  end
-end
-
-end; end; end

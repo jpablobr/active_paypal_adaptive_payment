@@ -1,0 +1,21 @@
+credentials:
+  login: APP_OWNER
+  password: 1234567890
+  signature: AKJJklhjg&^*&^75648798-7KJKLJKJHKJkjyuihklhkiyYIUKJL%&^%
+  appid: APP-80W284485P519543T
+
+paydetails_options:
+  paykey: AP-49N53304XXkjh2374P
+
+recipients: &recipients
+  - :email:  seller_1313041935_biz@gmail.com
+    :amount: 1
+  - :email:  recip_1313037218_biz@gmail.com
+    :amount: 1
+
+pay_options:
+  :senderEmail: sender@example.com
+  :remote_ip: 10.0.0.1
+  :return_url:  http://example.com/return
+  :cancel_url: http://example.com/cancel
+  :receiver_list: *recipients

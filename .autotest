@@ -1,0 +1,10 @@
+# -*- ruby -*-
+
+require 'autotest/restart'
+require 'autotest/timestamp'
+
+Autotest.add_hook(:initialize) do |at|
+  at.testlib = "minitest/unit"
+  at.add_exception %r{^\.git}
+  at.add_exception %r{^./tmp}
+end
