@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.description = "This library is meant to interface with PayPal web services Adaptive Payment Gateway Library."
 
   s.required_rubygems_version = ">= 1.3.6"
-  s.files = Dir.glob("lib/**/*") + %w(MIT-LICENSE readme.md CHANGELOG)
+  s.files = Dir.glob("lib/**/*") + %w(MIT-LICENSE readme.md CHANGELOG.md)
   s.require_path = %w(lib)
 
     if s.respond_to? :specification_version then
