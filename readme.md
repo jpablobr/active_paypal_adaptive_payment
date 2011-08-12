@@ -4,7 +4,8 @@ This library is meant to interface with PayPal web services Adaptive Payment Gat
 
 [Active Merchant]:http://www.activemerchant.org
 
-[iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https://www.x.com/docs/DOC-2505)
+![Active PayPal Adaptive Payment](https://github.com/jpablobr/active_paypal_adaptive_payment/raw/master/doc/split.jpg)
+
 ## Supported
 
 * payments
@@ -21,7 +22,7 @@ Add the following line to your app Gemfile:
 
 ## Implementation
 
-See ![Active PayPal Adaptive Payment](https://github.com/jpablobr/active_paypal_adaptive_payment/raw/master/doc/split.jpg) tutorial for more info.
+See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https://www.x.com/docs/DOC-2505) tutorial for more info.
 
 ### Pre-approved paymen
 
@@ -38,7 +39,7 @@ See ![Active PayPal Adaptive Payment](https://github.com/jpablobr/active_paypal_
 ### Cancel pre-approved payment
 
     gateway.cancel_preapproval(:preapproval_key => "preapprovalkey"
-)
+
 ### Chained payments
 
     def checkout
