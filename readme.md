@@ -63,6 +63,12 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
 
 Set the `:primary` flag to `false` for each recipient for a split payment.
 
+## Testing
+
+First modify the values in `test/fixtures.yml` to fit your app credentials.
+
+After that you can just execute them via `autotest`.
+
 ## Debugging
 
 Use either gateway.debug or response.debug this gives you the json
