@@ -20,7 +20,7 @@ task :gem do
 end
 
 YARD::Rake::YardocTask.new do |t|
-  t.files   = ['lib/**/*.rb', 'readme.md', 'CHANGELOG', 'MIT-LICENSE']
+  t.files   = ['lib/**/*.rb', 'readme.md', 'CHANGELOG.md', 'MIT-LICENSE']
   t.options += ['--any', '--extra', '--opts']
   t.options += ['--verbose', '--title', "Active Paypal Adaptive Payment Documentation"]
 end

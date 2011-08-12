@@ -4,8 +4,6 @@ This library is meant to interface with PayPal web services Adaptive Payment Gat
 
 [Active Merchant]:http://www.activemerchant.org
 
-![Active PayPal Adaptive Payment](https://github.com/jpablobr/active_paypal_adaptive_payment/raw/master/doc/split.jpg)
-
 [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https://www.x.com/docs/DOC-2505)
 ## Supported
 
@@ -22,6 +20,8 @@ Add the following line to your app Gemfile:
     gem "active_paypal_adaptive_payment"
 
 ## Implementation
+
+See ![Active PayPal Adaptive Payment](https://github.com/jpablobr/active_paypal_adaptive_payment/raw/master/doc/split.jpg) tutorial for more info.
 
 ### Pre-approved paymen
 
