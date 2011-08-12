@@ -1,6 +1,6 @@
 # Active PayPal Adaptive Payment
 
-This library is meant to interface with PayPal web services Adaptive Payment Gateway Library.
+This library is meant to interface with PayPal's Adaptive Payment Gateway.
 
 [Active Merchant]:http://www.activemerchant.org
 
@@ -8,17 +8,19 @@ This library is meant to interface with PayPal web services Adaptive Payment Gat
 
 ## Supported
 
-* payments
-* preapprovals
-* refunds
-* currency conversions
-* more soon!
+* Payments
+* Peapprovals
+* Refunds
+* Currency conversions
+* More soon!
 
 ## Installation
 
 Add the following line to your app Gemfile:
 
     gem "active_paypal_adaptive_payment"
+
+    bundle install
 
 ## Implementation
 

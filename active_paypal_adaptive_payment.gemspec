@@ -6,7 +6,9 @@ Gem::Specification.new do |s|
   s.email       = ["xjpablobrx@gmail.com"]
   s.homepage    = "http://github.com/jpablobr/active_paypal_adaptive_payment"
   s.summary     = "ActiveMercant PayPal Adaptive Payment Library"
-  s.description = "This library is meant to interface with PayPal web services Adaptive Payment Gateway Library."
+  s.description = <<-eof
+    This library is meant to interface with PayPal's Adaptive Payment Gateway.
+  eof
 
   s.required_rubygems_version = ">= 1.3.6"
   s.files = Dir.glob("lib/**/*") + %w(MIT-LICENSE readme.md CHANGELOG.md)
