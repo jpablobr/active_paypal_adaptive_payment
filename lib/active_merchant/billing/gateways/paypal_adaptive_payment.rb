@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 dir = File.dirname(__FILE__)
-[ '/paypal_adaptive_payments/exceptions.rb',
-  '/paypal_adaptive_payments/adaptive_payment_response.rb',
-  '/paypal_adaptive_payments/ext.rb'
-].each { |f| require File.join(dir, f) }
+%w{
+'/paypal_adaptive_payments/exceptions.rb'
+'/paypal_adaptive_payments/adaptive_payment_response.rb'
+'/paypal_adaptive_payments/ext.rb'
+}.each { |f| require File.join(dir, f) }
 
 require 'money'
 

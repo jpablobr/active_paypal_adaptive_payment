@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Module: ActiveMerchant::Billing::PaypalAdaptivePayment::PaymentType
+  
+    &mdash; Active Paypal Adaptive Payment Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../_index.html">Index (P)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../ActiveMerchant.html" title="ActiveMerchant (module)">ActiveMerchant</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Billing.html" title="ActiveMerchant::Billing (module)">Billing</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../PaypalAdaptivePayment.html" title="ActiveMerchant::Billing::PaypalAdaptivePayment (class)">PaypalAdaptivePayment</a></span></span>
+     &raquo; 
+    <span class="title">PaymentType</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Module: ActiveMerchant::Billing::PaypalAdaptivePayment::PaymentType
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+  
+    
+  
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+
+  <h2>Constant Summary</h2>
+  
+    <dl class="constants">
+      
+        <dt id="TYPES-constant" class="">TYPES =
+          
+        </dt>
+        <dd><pre class="code">= File.dirname(__FILE__)
+%w{
+'/paypal_adaptive_payments/exceptions.rb'
+'/paypal_adaptive_payments/adaptive_payment_response.rb'
+'/paypal_adaptive_payments/ext.rb'
+}.each { |f| require File.join(dir, f) }
+
+require 'money'
+
+module ActiveMerchant #:nodoc:
+  module Billing #:nodoc:
+    class PaypalAdaptivePayment &lt; Gateway # :nodoc:
+
+      TEST_URL = 'https://svcs.sandbox.paypal.com/AdaptivePayments/'
+      LIVE_URL = 'https://svcs.paypal.com/AdaptivePayments/'
+
+      EMBEDDED_FLOW_TEST_URL = 'https://www.sandbox.paypal.com/webapps/adaptivepayment/flow/pay'
+      EMBEDDED_FLOW_LIVE_URL = 'https://www.paypal.com/webapps/adaptivepayment/flow/pay'
+
+      module FeesPayer
+OPTIONS = %w(SENDER PRIMARYRECEIVER EACHRECEIVER SECONDARYONLY)
+OPTIONS.each { |opt| const_set(opt, opt) }
+      end
+
+      module PaymentType
+TYPES = %w(DIGITALGOODS)</pre></dd>
+      
+    </dl>
+  
+
+
+
+
+
+
+
+</div>
+    
+    <div id="footer">
+  Generated on Sat Aug 13 16:56:49 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.2 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
