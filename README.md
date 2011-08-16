@@ -28,13 +28,13 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
 
 ### Init
 
-   @gateway =
-        ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-          :login => "acutio_1313133342_biz_api1.gmail.com",
-          :password => "1255043567",
-          :signature => "Abg0gYcQlsdkls2HDJkKtA-p6pqhA1k-KTYE0Gcy1diujFio4io5Vqjf",
-          :appid => "APP-80W284485P519543T"
-        )
+    gateway =
+          ActiveMerchant::Billing::PaypalAdaptivePayment.new(
+            :login => "acutio_1313133342_biz_api1.gmail.com",
+            :password => "1255043567",
+            :signature => "Abg0gYcQlsdkls2HDJkKtA-p6pqhA1k-KTYE0Gcy1diujFio4io5Vqjf",
+            :appid => "APP-80W284485P519543T"
+          )
 
 ### Pre-approved paymen
 

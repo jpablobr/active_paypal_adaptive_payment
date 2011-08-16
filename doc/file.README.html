@@ -84,6 +84,17 @@
 
 <p>See <a href="https://www.x.com/docs/DOC-2505">iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments</a> tutorial for more info.</p>
 
+<h3>Init</h3>
+
+<pre class="code"><span class='id gateway'>gateway</span> <span class='op'>=</span>
+      <span class='const'>ActiveMerchant</span><span class='op'>::</span><span class='const'>Billing</span><span class='op'>::</span><span class='const'>PaypalAdaptivePayment</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span>
+        <span class='symbol'>:login</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>acutio_1313133342_biz_api1.gmail.com</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='symbol'>:password</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>1255043567</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='symbol'>:signature</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Abg0gYcQlsdkls2HDJkKtA-p6pqhA1k-KTYE0Gcy1diujFio4io5Vqjf</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+        <span class='symbol'>:appid</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>APP-80W284485P519543T</span><span class='tstring_end'>&quot;</span></span>
+      <span class='rparen'>)</span>
+</pre>
+
 <h3>Pre-approved paymen</h3>
 
 <pre class="code">gateway.preapprove_payment (
@@ -123,6 +134,8 @@
 </pre>
 
 <p>Set the <code>:primary</code> flag to <code>false</code> for each recipient for a split payment.</p>
+
+<p>Maybe also check the tests for a sample implementation.</p>
 
 <h2>Testing</h2>
 
@@ -239,7 +252,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 </div></div>
     
     <div id="footer">
-  Generated on Sat Aug 13 17:07:04 2011 by 
+  Generated on Tue Aug 16 20:22:56 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>
