@@ -1,3 +1,7 @@
+## 0.2.3
+
+  - `autoload` the helper libs.
+
 ## 0.2.2
 
   - Array fix https://github.com/lsegal/yard/issues/370

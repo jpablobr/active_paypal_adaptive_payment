@@ -22,3 +22,4 @@ class TestPaypalAdaptivePayment < MiniTest::Unit::TestCase
     assert_equal true, response.success?, "Unsuccessful Transaction"
   end
 end
+

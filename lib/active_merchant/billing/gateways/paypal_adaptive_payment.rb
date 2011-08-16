@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
-dir = File.dirname(__FILE__)
-%w{
-'/paypal_adaptive_payments/exceptions.rb'
-'/paypal_adaptive_payments/adaptive_payment_response.rb'
-'/paypal_adaptive_payments/ext.rb'
-}.each { |f| require File.join(dir, f) }
-
 require 'money'
 
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
+
+    autoload :AdaptivePaymentResponse,
+    File.dirname(__FILE__) + '/paypal_adaptive_payments/adaptive_payment_response'
+
     class PaypalAdaptivePayment < Gateway # :nodoc:
+
+      d = File.dirname(__FILE__) + '/paypal_adaptive_payments/'
+      autoload :PaypalAdaptivePaymentsApiError, d + 'exception'
+      autoload :HTTPHeader, d + 'ext'
 
       TEST_URL = 'https://svcs.sandbox.paypal.com/AdaptivePayments/'
       LIVE_URL = 'https://svcs.paypal.com/AdaptivePayments/'
