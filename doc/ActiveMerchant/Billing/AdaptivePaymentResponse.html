@@ -66,10 +66,12 @@
   
     <dt class="r1">Inherits:</dt>
     <dd class="r1">
-      <span class="inheritName">Object</span>
+      <span class="inheritName">Response</span>
       
         <ul class="fullTree">
           <li>Object</li>
+          
+            <li class="next">Response</li>
           
             <li class="next">ActiveMerchant::Billing::AdaptivePaymentResponse</li>
           
@@ -97,16 +99,6 @@
   
     <dl class="constants">
       
-        <dt id="REDIRECT_URL-constant" class="">REDIRECT_URL =
-          
-        </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https://www.paypal.com/webscr?cmd=_ap-payment&amp;paykey=</span><span class='tstring_end'>'</span></span></pre></dd>
-      
-        <dt id="TEST_REDIRECT_URL-constant" class="">TEST_REDIRECT_URL =
-          
-        </dt>
-        <dd><pre class="code"><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&amp;paykey=</span><span class='tstring_end'>'</span></span></pre></dd>
-      
         <dt id="SUCCESS-constant" class="">SUCCESS =
           
         </dt>
@@ -116,6 +108,7 @@
   
 
 
+  
   <h2>Instance Attribute Summary <small>(<a href="#" class="summary_toggle">collapse</a>)</small></h2>
   <ul class="summary">
     
@@ -152,6 +145,7 @@ Returns the value of attribute json.
 
 
 
+  
 
   
     <h2>
@@ -177,7 +171,10 @@ Returns the value of attribute json.
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'><p>
+def redirect_url_for.
+</p>
+</div></span>
   
 </li>
 
@@ -276,27 +273,6 @@ A new instance of AdaptivePaymentResponse.
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#redirect_url_for-instance_method" title="#redirect_url_for (instance method)">- (Object) <strong>redirect_url_for</strong> </a>
-    
-
-    
-  </span>
-  
-  
-  
-  
-  
-  
-
-  
-    <span class="summary_desc"><div class='inline'></div></span>
-  
-</li>
-
-      
-        <li class="public ">
-  <span class="summary_signature">
-    
       <a href="#success%3F-instance_method" title="#success? (instance method)">- (Boolean) <strong>success?</strong> </a>
     
 
@@ -339,7 +315,8 @@ A new instance of AdaptivePaymentResponse.
     </ul>
   
 
-<div id="constructor_details" class="method_details_list">
+
+  <div id="constructor_details" class="method_details_list">
   <h2>Constructor Details</h2>
   
     <div class="method_details first">
@@ -360,20 +337,19 @@ A new instance of AdaptivePaymentResponse
 </div>
 <div class="tags">
   
-
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-17
-18
-19
-20</pre>
+14
+15
+16
+17</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 17</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 14</span>
 
 <span class='kw'>def</span> <span class='id initialize'>initialize</span><span class='lparen'>(</span><span class='id json'>json</span><span class='rparen'>)</span>
   <span class='ivar'>@json</span> <span class='op'>=</span> <span class='id json'>json</span>
@@ -405,12 +381,12 @@ A new instance of AdaptivePaymentResponse
       <pre class="lines">
 
 
-22
-23
-24</pre>
+19
+20
+21</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 22</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id method_missing'>method_missing</span><span class='lparen'>(</span><span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
   <span class='ivar'>@response_rash</span><span class='period'>.</span><span class='id send'>send</span><span class='lparen'>(</span><span class='id method'>method</span><span class='comma'>,</span> <span class='op'>*</span><span class='id args'>args</span><span class='comma'>,</span> <span class='op'>&amp;</span><span class='id block'>block</span><span class='rparen'>)</span>
@@ -450,19 +426,18 @@ Returns the value of attribute json
 </div>
 <div class="tags">
   
-
 </div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-14
-15
-16</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 14</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id json'>json</span>
   <span class='ivar'>@json</span>
@@ -486,18 +461,35 @@ Returns the value of attribute json
   
 
   
-</p><table class="source_code">
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+def redirect_url_for
+</p>
+<pre class="code">
+  <span class='const'>Base</span><span class='period'>.</span><span class='id gateway_mode'>gateway_mode</span> <span class='op'>==</span> <span class='symbol'>:test</span> <span class='op'>?</span> <span class='lparen'>(</span><span class='const'>TEST_REDIRECT_URL</span> <span class='op'>+</span> <span class='id pay_key'>pay_key</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='lparen'>(</span><span class='const'>REDIRECT_URL</span> <span class='op'>+</span> <span class='id pay_key'>pay_key</span><span class='rparen'>)</span>
+</pre>
+<p>
+end
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-30
-31
-32</pre>
+27
+28
+29</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 30</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 27</span>
 
 <span class='kw'>def</span> <span class='id ack'>ack</span>
   <span class='id response_envelope'>response_envelope</span><span class='period'>.</span><span class='id ack'>ack</span>
@@ -520,12 +512,12 @@ Returns the value of attribute json
       <pre class="lines">
 
 
-38
-39
-40</pre>
+35
+36
+37</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 38</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 35</span>
 
 <span class='kw'>def</span> <span class='id build'>build</span>
   <span class='id response_envelope'>response_envelope</span><span class='period'>.</span><span class='id build'>build</span>
@@ -552,43 +544,15 @@ Returns the value of attribute json
       <pre class="lines">
 
 
-42
-43
-44</pre>
+39
+40
+41</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 39</span>
 
 <span class='kw'>def</span> <span class='id correlation_id'>correlation_id</span>
   <span class='id response_envelope'>response_envelope</span><span class='period'>.</span><span class='id correlation_id'>correlation_id</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <p class="signature " id="redirect_url_for-instance_method">
-  
-    - (<tt>Object</tt>) <strong>redirect_url_for</strong> 
-  
-
-  
-</p><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-26
-27
-28</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 26</span>
-
-<span class='kw'>def</span> <span class='id redirect_url_for'>redirect_url_for</span>
-  <span class='const'>Base</span><span class='period'>.</span><span class='id gateway_mode'>gateway_mode</span> <span class='op'>==</span> <span class='symbol'>:test</span> <span class='op'>?</span> <span class='lparen'>(</span><span class='const'>TEST_REDIRECT_URL</span> <span class='op'>+</span> <span class='id pay_key'>pay_key</span><span class='rparen'>)</span> <span class='op'>:</span> <span class='lparen'>(</span><span class='const'>REDIRECT_URL</span> <span class='op'>+</span> <span class='id pay_key'>pay_key</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -609,8 +573,7 @@ Returns the value of attribute json
   </div>
 </div>
 <div class="tags">
-  
-<h3>Returns:</h3>
+  <h3>Returns:</h3>
 <ul class="return">
   
     <li>
@@ -630,12 +593,12 @@ Returns the value of attribute json
       <pre class="lines">
 
 
-47
-48
-49</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id success?'>success?</span>
   <span class='id ack'>ack</span> <span class='op'>==</span> <span class='const'>SUCCESS</span>
@@ -658,12 +621,12 @@ Returns the value of attribute json
       <pre class="lines">
 
 
-34
-35
-36</pre>
+31
+32
+33</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 34</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payments/adaptive_payment_response.rb', line 31</span>
 
 <span class='kw'>def</span> <span class='id timestamp'>timestamp</span>
   <span class='id response_envelope'>response_envelope</span><span class='period'>.</span><span class='id timestamp'>timestamp</span>
@@ -678,7 +641,7 @@ Returns the value of attribute json
 </div>
     
     <div id="footer">
-  Generated on Tue Aug 16 20:22:56 2011 by 
+  Generated on Wed Aug 24 07:35:42 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>

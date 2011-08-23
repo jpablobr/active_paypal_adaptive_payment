@@ -85,19 +85,18 @@
         <dt id="OPTIONS-constant" class="">OPTIONS =
           
         </dt>
-        <dd><pre class="code">require 'money'
+        <dd><pre class="code">*-
+require 'money'
+require File.dirname(__FILE__) + '/paypal_adaptive_payments/ext'
+require File.dirname(__FILE__) + '/paypal_adaptive_payment_common'
+require File.dirname(__FILE__) + '/paypal_adaptive_payments/exceptions'
+require File.dirname(__FILE__) + '/paypal_adaptive_payments/adaptive_payment_response'
 
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
 
-    autoload :AdaptivePaymentResponse,
-    File.dirname(__FILE__) + '/paypal_adaptive_payments/adaptive_payment_response'
-
-    class PaypalAdaptivePayment &lt; Gateway # :nodoc:
-
-      d = File.dirname(__FILE__) + '/paypal_adaptive_payments/'
-      autoload :PaypalAdaptivePaymentsApiError, d + 'exception'
-      autoload :HTTPHeader, d + 'ext'
+    class PaypalAdaptivePayment &lt; Gateway # :nodoc
+      include PaypalAdaptivePaymentCommon
 
       TEST_URL = 'https://svcs.sandbox.paypal.com/AdaptivePayments/'
       LIVE_URL = 'https://svcs.paypal.com/AdaptivePayments/'
@@ -120,7 +119,7 @@ OPTIONS = %w(SENDER PRIMARYRECEIVER EACHRECEIVER SECONDARYONLY)</pre></dd>
 </div>
     
     <div id="footer">
-  Generated on Tue Aug 16 20:22:56 2011 by 
+  Generated on Wed Aug 24 07:35:41 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>
