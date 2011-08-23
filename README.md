@@ -30,27 +30,26 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
 
     gateway =
           ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-            :login => "acutio_1313133342_biz_api1.gmail.com",
-            :password => "1255043567",
-            :signature => "Abg0gYcQlsdkls2HDJkKtA-p6pqhA1k-KTYE0Gcy1diujFio4io5Vqjf",
-            :appid => "APP-80W284485P519543T"
-          )
+             :login => "acutio_1313133342_biz_api1.gmail.com",
+             :password => "1255043567",
+             :signature => "Abg0gYcQlsdkls2HDJkKtA-p6pqhA1k-KTYE0Gcy1diujFio4io5Vqjf",
+             :appid => "APP-80W284485P519543T" )
 
 ### Pre-approved paymen
 
     gateway.preapprove_payment (
-      :return_url => "returnURL",
-      :cancel_url => "cancelURL",
-      :senderEmail =>"email address of sender",
-      :start_date => Time.now,
-      :end_date => Time.now + (60*60*24) * 30,
-      :currency_code =>"currency code",
-      :max_amount => "maxTotalAmountOfAllPayments",
-      :maxNumberOfPayments => "maxNumberOfPayments" )
+       :return_url => "returnURL",
+       :cancel_url => "cancelURL",
+       :senderEmail =>"email address of sender",
+       :start_date => Time.now,
+       :end_date => Time.now + (60*60*24) * 30,
+       :currency_code =>"currency code",
+       :max_amount => "maxTotalAmountOfAllPayments",
+       :maxNumberOfPayments => "maxNumberOfPayments" )
 
 ### Cancel pre-approved payment
 
-    gateway.cancel_preapproval(:preapproval_key => "preapprovalkey"
+    gateway.cancel_preapproval(:preapproval_key => "preapprovalkey")
 
 ### Chained payments
 
@@ -62,13 +61,15 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
                      :amount => recipient_amount,
                      :primary => false}
                      ]
-      response = gateway.pay(
+      response = gateway.setup_purchase(
         :return_url => url_for(:action => 'action', :only_path => false),
         :cancel_url => url_for(:action => 'action', :only_path => false),
         :notify_url => url_for(:action => 'notify_action', :only_path => false),
         :receiver_list => recipients
       )
-      redirect_to response.redirect_url_for
+
+      # for redirecting the customer to the actual paypal site to finish the payment.
+     redirect_to (gateway.redirect_url_for(response["payKey"]))
     end
 
 Set the `:primary` flag to `false` for each recipient for a split payment.
