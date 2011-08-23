@@ -37,19 +37,19 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
 
 ### Pre-approved paymen
 
-    gateway.preapprove_payment (
-       :return_url => "returnURL",
-       :cancel_url => "cancelURL",
-       :senderEmail =>"email address of sender",
-       :start_date => Time.now,
-       :end_date => Time.now + (60*60*24) * 30,
-       :currency_code =>"currency code",
-       :max_amount => "maxTotalAmountOfAllPayments",
-       :maxNumberOfPayments => "maxNumberOfPayments" )
+      gateway.preapprove_payment (
+         :return_url => "returnURL",
+         :cancel_url => "cancelURL",
+         :senderEmail =>"email address of sender",
+         :start_date => Time.now,
+         :end_date => Time.now + (60*60*24) * 30,
+         :currency_code =>"currency code",
+         :max_amount => "maxTotalAmountOfAllPayments",
+         :maxNumberOfPayments => "maxNumberOfPayments" )
 
 ### Cancel pre-approved payment
 
-    gateway.cancel_preapproval(:preapproval_key => "preapprovalkey")
+     gateway.cancel_preapproval(:preapproval_key => "preapprovalkey")
 
 ### Chained payments
 
