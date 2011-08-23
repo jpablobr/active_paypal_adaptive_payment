@@ -1,17 +1,15 @@
 # -*- coding: utf-8 -*-
 require 'money'
+require File.dirname(__FILE__) + '/paypal_adaptive_payments/ext'
+require File.dirname(__FILE__) + '/paypal_adaptive_payment_common'
+require File.dirname(__FILE__) + '/paypal_adaptive_payments/exceptions'
+require File.dirname(__FILE__) + '/paypal_adaptive_payments/adaptive_payment_response'
 
 module ActiveMerchant #:nodoc:
   module Billing #:nodoc:
 
-    autoload :AdaptivePaymentResponse,
-    File.dirname(__FILE__) + '/paypal_adaptive_payments/adaptive_payment_response'
-
-    class PaypalAdaptivePayment < Gateway # :nodoc:
-
-      d = File.dirname(__FILE__) + '/paypal_adaptive_payments/'
-      autoload :PaypalAdaptivePaymentsApiError, d + 'exception'
-      autoload :HTTPHeader, d + 'ext'
+    class PaypalAdaptivePayment < Gateway # :nodoc
+      include PaypalAdaptivePaymentCommon
 
       TEST_URL = 'https://svcs.sandbox.paypal.com/AdaptivePayments/'
       LIVE_URL = 'https://svcs.paypal.com/AdaptivePayments/'
@@ -29,13 +27,9 @@ module ActiveMerchant #:nodoc:
         TYPES.each { |pt| const_set(pt, pt) }
       end
 
-      # The countries the gateway supports merchants from as 2 digit ISO country codes
+	    self.test_redirect_url= "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey="
       self.supported_countries = ['US']
-
-      # The homepage URL of the gateway
       self.homepage_url = 'http://x.com/'
-
-      # The name of the gateway
       self.display_name = 'Paypal Adaptive Payments'
 
       def initialize(config = {})
@@ -44,7 +38,7 @@ module ActiveMerchant #:nodoc:
         super
       end
 
-      def pay(options)
+      def setup_purchase(options)
         commit('Pay', build_adaptive_payment_pay_request(options))
       end
 
@@ -95,6 +89,7 @@ module ActiveMerchant #:nodoc:
       end
 
       private
+
       def build_adaptive_payment_pay_request(opts)
         @xml = ''
         xml = Builder::XmlMarkup.new :target => @xml, :indent => 2
@@ -272,7 +267,7 @@ module ActiveMerchant #:nodoc:
           "X-PAYPAL-SECURITY-USERID" => @config[:login],
           "X-PAYPAL-SECURITY-PASSWORD" => @config[:password],
           "X-PAYPAL-SECURITY-SIGNATURE" => @config[:signature],
-          "X-PAYPAL-APPLICATION-ID" => @config[:appid]
+          "X-PAYPAL-APPLICATION-ID" => @config[:appid],
         }
         action_url(action)
         request = Net::HTTP::Post.new(@url.path)

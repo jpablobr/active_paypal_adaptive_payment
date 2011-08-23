@@ -1,3 +1,9 @@
+## 0.2.4
+
+  - renamed the pay method to setup_purchase, again, more like active_merchant.
+  - added paypal_adaptive_payment_common.rb for handling the redirects more like active_merchant
+  - removed the autoloads, they look kind of messy
+
 ## 0.2.3
 
   - `autoload` the helper libs.

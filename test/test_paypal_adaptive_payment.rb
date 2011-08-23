@@ -7,9 +7,16 @@ class TestPaypalAdaptivePayment < MiniTest::Unit::TestCase
   end
 
   def test_successful_pay
-    assert response = @gateway.pay(fixtures(:pay_options))
+    assert response = @gateway.setup_purchase(fixtures(:pay_options))
     assert_equal true, response.success?, "Unsuccessful Transaction"
     assert_equal "CREATED","#{response.payment_exec_status}"
+  end
+
+  def test_redirect_url_for
+    assert response = @gateway.setup_purchase(fixtures(:pay_options))
+    key = response["payKey"]
+    url = @gateway.redirect_url_for(key)
+    assert_match /#{key}$/, url, "Could not generate the proper redirect_url_for URL"
   end
 
   def test_successful_paydetails
@@ -21,5 +28,5 @@ class TestPaypalAdaptivePayment < MiniTest::Unit::TestCase
     assert response = @gateway.preapprove_payment(preapproval_options)
     assert_equal true, response.success?, "Unsuccessful Transaction"
   end
-end
 
+end

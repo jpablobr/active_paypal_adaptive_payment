@@ -4,10 +4,7 @@ require 'rash'
 
 module ActiveMerchant
   module Billing
-    class AdaptivePaymentResponse
-
-      REDIRECT_URL = 'https://www.paypal.com/webscr?cmd=_ap-payment&paykey='
-      TEST_REDIRECT_URL = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey='
+    class AdaptivePaymentResponse < Response
 
       SUCCESS = 'Success'.freeze
 
@@ -23,9 +20,9 @@ module ActiveMerchant
         @response_rash.send(method, *args, &block)
       end
 
-      def redirect_url_for
-        Base.gateway_mode == :test ? (TEST_REDIRECT_URL + pay_key) : (REDIRECT_URL + pay_key)
-      end
+      # def redirect_url_for
+      #   Base.gateway_mode == :test ? (TEST_REDIRECT_URL + pay_key) : (REDIRECT_URL + pay_key)
+      # end
 
       def ack
         response_envelope.ack
