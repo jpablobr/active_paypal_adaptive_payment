@@ -96,20 +96,20 @@
 
 <h3>Pre-approved paymen</h3>
 
-<pre class="code">gateway.preapprove_payment (
-   :return_url =&gt; &quot;returnURL&quot;,
-   :cancel_url =&gt; &quot;cancelURL&quot;,
-   :senderEmail =&gt;&quot;email address of sender&quot;,
-   :start_date =&gt; Time.now,
-   :end_date =&gt; Time.now + (60*60*24) * 30,
-   :currency_code =&gt;&quot;currency code&quot;,
-   :max_amount =&gt; &quot;maxTotalAmountOfAllPayments&quot;,
-   :maxNumberOfPayments =&gt; &quot;maxNumberOfPayments&quot; )
+<pre class="code">  gateway.preapprove_payment (
+     :return_url =&gt; &quot;returnURL&quot;,
+     :cancel_url =&gt; &quot;cancelURL&quot;,
+     :senderEmail =&gt;&quot;email address of sender&quot;,
+     :start_date =&gt; Time.now,
+     :end_date =&gt; Time.now + (60*60*24) * 30,
+     :currency_code =&gt;&quot;currency code&quot;,
+     :max_amount =&gt; &quot;maxTotalAmountOfAllPayments&quot;,
+     :maxNumberOfPayments =&gt; &quot;maxNumberOfPayments&quot; )
 </pre>
 
 <h3>Cancel pre-approved payment</h3>
 
-<pre class="code"><span class='id gateway'>gateway</span><span class='period'>.</span><span class='id cancel_preapproval'>cancel_preapproval</span><span class='lparen'>(</span><span class='symbol'>:preapproval_key</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>preapprovalkey</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<pre class="code"> <span class='id gateway'>gateway</span><span class='period'>.</span><span class='id cancel_preapproval'>cancel_preapproval</span><span class='lparen'>(</span><span class='symbol'>:preapproval_key</span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>preapprovalkey</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
 </pre>
 
 <h3>Chained payments</h3>
@@ -253,7 +253,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 </div></div>
     
     <div id="footer">
-  Generated on Wed Aug 24 07:42:34 2011 by 
+  Generated on Mon Oct  3 21:45:40 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>
