@@ -1,3 +1,7 @@
+## 0.2.5
+
+  - Added custom filed to the request builder.
+
 ## 0.2.4
 
   - renamed the pay method to setup_purchase, again, more like active_merchant.

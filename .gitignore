@@ -22,6 +22,4 @@ test/fixtures.yml
 Gemfile.lock
 *.gem
 TAGS
-lib/active_merchant/billing/gateways/paypal_adaptive_payments/caller.rb
-lib/active_merchant/billing/gateways/paypal_adaptive_payments/profile.rb
-lib/active_merchant/billing/gateways/paypal_adaptive_payments/utils.rb
+diagram.txt

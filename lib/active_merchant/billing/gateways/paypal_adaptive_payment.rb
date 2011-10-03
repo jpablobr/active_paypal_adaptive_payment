@@ -105,6 +105,7 @@ module ActiveMerchant #:nodoc:
           x.returnUrl opts[:return_url]
           x.ipnNotificationUrl opts[:ipn_notification_url] if opts[:ipn_notification_url]
           x.memo opts[:memo] if opts.key?(:memo)
+          x.custom opts[:custom] if opts.key?(:custom)
           x.feesPayer opts[:fees_payer] if opts[:fees_payer]
           x.pin opts[:pin] if opts[:pin]
           x.currencyCode opts[:currency_code] ||= 'USD'
