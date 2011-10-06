@@ -1,0 +1,819 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>
+  Class: ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment::Notification
+  
+    &mdash; Active Paypal Adaptive Payment Documentation
+  
+</title>
+
+  <link rel="stylesheet" href="../../../../css/style.css" type="text/css" media="screen" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../../css/common.css" type="text/css" media="screen" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  relpath = '../../../..';
+  if (relpath != '') relpath += '/';
+</script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <script type="text/javascript" charset="utf-8">
+      if (window.top.frames.main) document.body.className = 'frames';
+    </script>
+    
+    <div id="header">
+      <div id="menu">
+  
+    <a href="../../../../_index.html">Index (N)</a> &raquo; 
+    <span class='title'><span class='object_link'><a href="../../../../ActiveMerchant.html" title="ActiveMerchant (module)">ActiveMerchant</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../../Billing.html" title="ActiveMerchant::Billing (module)">Billing</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../Integrations.html" title="ActiveMerchant::Billing::Integrations (module)">Integrations</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../PaypalAdaptivePayment.html" title="ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment (module)">PaypalAdaptivePayment</a></span></span>
+     &raquo; 
+    <span class="title">Notification</span>
+  
+  
+  <div class="noframes"><span class="title">(</span><a href="." target="_top">no frames</a><span class="title">)</span></div>
+</div>
+
+      <div id="search">
+  
+    <a id="class_list_link" href="#">Class List</a>
+  
+    <a id="method_list_link" href="#">Method List</a>
+  
+    <a id="file_list_link" href="#">File List</a>
+  
+</div>
+      <div class="clear"></div>
+    </div>
+    
+    <iframe id="search_frame"></iframe>
+    
+    <div id="content"><h1>Class: ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment::Notification
+  
+  
+  
+</h1>
+
+<dl class="box">
+  
+    <dt class="r1">Inherits:</dt>
+    <dd class="r1">
+      <span class="inheritName"><span class='object_link'><a href="../Notification.html" title="ActiveMerchant::Billing::Integrations::Notification (class)">Notification</a></span></span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next"><span class='object_link'><a href="../Notification.html" title="ActiveMerchant::Billing::Integrations::Notification (class)">Notification</a></span></li>
+          
+            <li class="next">ActiveMerchant::Billing::Integrations::PaypalAdaptivePayment::Notification</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+      </dd>
+    
+  
+  
+    
+  
+    
+      <dt class="r2">Includes:</dt>
+      <dd class="r2">PostsData</dd>
+      
+    
+  
+  
+  
+    <dt class="r1 last">Defined in:</dt>
+    <dd class="r1 last">lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb</dd>
+  
+</dl>
+<div class="clear"></div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    <p>
+Parser and handler for incoming Instant payment notifications from paypal.
+The Example shows a typical handler in a rails application. Note that this
+is an example, please read the Paypal API documentation for all the details
+on creating a safe payment controller.
+</p>
+<p>
+Example
+</p>
+<pre class="code">
+  <span class='kw'>class</span> <span class='const'>BackendController</span> <span class='op'>&lt;</span> <span class='const'>ApplicationController</span>
+    <span class='id include'>include</span> <span class='const'>ActiveMerchant</span><span class='op'>::</span><span class='const'>Billing</span><span class='op'>::</span><span class='const'>Integrations</span>
+
+    <span class='kw'>def</span> <span class='id paypal_ipn'>paypal_ipn</span>
+      <span class='id notify'>notify</span> <span class='op'>=</span> <span class='const'>PaypalAdaptivePayment</span><span class='op'>::</span><span class='const'>Notification</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='id request'>request</span><span class='period'>.</span><span class='id raw_post'>raw_post</span><span class='rparen'>)</span>
+
+      <span class='id order'>order</span> <span class='op'>=</span> <span class='const'>Order</span><span class='period'>.</span><span class='id find'>find</span><span class='lparen'>(</span><span class='id notify'>notify</span><span class='period'>.</span><span class='id item_id'>item_id</span><span class='rparen'>)</span>
+
+      <span class='kw'>if</span> <span class='id notify'>notify</span><span class='period'>.</span><span class='id acknowledge'>acknowledge</span>
+        <span class='kw'>begin</span>
+
+          <span class='kw'>if</span> <span class='id notify'>notify</span><span class='period'>.</span><span class='id complete?'>complete?</span> <span class='kw'>and</span> <span class='id order'>order</span><span class='period'>.</span><span class='id total'>total</span> <span class='op'>==</span> <span class='id notify'>notify</span><span class='period'>.</span><span class='id amount'>amount</span>
+            <span class='id order'>order</span><span class='period'>.</span><span class='id status'>status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>COMPLETED</span><span class='tstring_end'>'</span></span>
+
+            <span class='id shop'>shop</span><span class='period'>.</span><span class='id ship'>ship</span><span class='lparen'>(</span><span class='id order'>order</span><span class='rparen'>)</span>
+          <span class='kw'>else</span>
+            <span class='id logger'>logger</span><span class='period'>.</span><span class='id error'>error</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Failed to verify Paypal's notification, please investigate</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+          <span class='kw'>end</span>
+
+        <span class='kw'>rescue</span> <span class='op'>=&gt;</span> <span class='id e'>e</span>
+          <span class='id order'>order</span><span class='period'>.</span><span class='id status'>status</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ERROR</span><span class='tstring_end'>'</span></span>
+          <span class='id raise'>raise</span>
+        <span class='kw'>ensure</span>
+          <span class='id order'>order</span><span class='period'>.</span><span class='id save'>save</span>
+        <span class='kw'>end</span>
+      <span class='kw'>end</span>
+
+      <span class='id render'>render</span> <span class='symbol'>:nothing</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span></pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div>
+
+  
+  
+  
+  
+  
+
+
+  
+  
+  
+  
+
+  
+    <h2>
+      Instance Method Summary
+      <small>(<a href="#" class="summary_toggle">collapse</a>)</small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#account-instance_method" title="#account (instance method)">- (Object) <strong>account</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#acknowledge-instance_method" title="#acknowledge (instance method)">- (Object) <strong>acknowledge</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Acknowledge the transaction to paypal.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#complete%3F-instance_method" title="#complete? (instance method)">- (Boolean) <strong>complete?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Was the transaction complete?.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#invoice-instance_method" title="#invoice (instance method)">- (Object) <strong>invoice</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is the invoice which you passed to paypal.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#item_id-instance_method" title="#item_id (instance method)">- (Object) <strong>item_id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+This is the item number which we submitted to paypal The custom field is
+also mapped to item_id because PayPal doesn&#8217;t return item_number in
+dispute notifications.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#status-instance_method" title="#status (instance method)">- (Object) <strong>status</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Status of transaction.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#test%3F-instance_method" title="#test? (instance method)">- (Boolean) <strong>test?</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Was this a test transaction?.
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#transaction_id-instance_method" title="#transaction_id (instance method)">- (Object) <strong>transaction_id</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'><p>
+Id of this transaction (paypal number).
+</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#type-instance_method" title="#type (instance method)">- (Object) <strong>type</strong> </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+
+  
+  
+  
+  
+  
+  
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+    
+    
+      <div class="method_details first">
+  <p class="signature first" id="account-instance_method">
+  
+    - (<tt>Object</tt>) <strong>account</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+91
+92
+93</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb', line 91</span>
+
+<span class='kw'>def</span> <span class='id account'>account</span>
+  <span class='id params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>business</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>transaction[0].receiver</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="acknowledge-instance_method">
+  
+    - (<tt>Object</tt>) <strong>acknowledge</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Acknowledge the transaction to paypal. This method has to be called after a
+new ipn arrives. Paypal will verify that all the information we received
+are correct and will return a ok or a fail.
+</p>
+<p>
+Example:
+</p>
+<pre class="code">
+  def paypal_ipn
+    notify = PaypalAdaptivePaymentNotification.new(request.raw_post)
+
+    if notify.acknowledge
+      ... process order ... if notify.complete?
+    else
+      ... log possible hacking attempt ...
+    end</pre>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Raises:</h3>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>StandardError</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb', line 109</span>
+
+<span class='kw'>def</span> <span class='id acknowledge'>acknowledge</span>
+  <span class='id payload'>payload</span> <span class='op'>=</span>  <span class='id raw'>raw</span>
+
+  <span class='id response'>response</span> <span class='op'>=</span> <span class='id ssl_post'>ssl_post</span><span class='lparen'>(</span><span class='const'>Paypal</span><span class='period'>.</span><span class='id service_url'>service_url</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>?cmd=_notify-validate</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id payload'>payload</span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Content-Length</span><span class='tstring_end'>'</span></span> <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id payload'>payload</span><span class='period'>.</span><span class='id size'>size</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
+    <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>User-Agent</span><span class='tstring_end'>'</span></span>     <span class='op'>=&gt;</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Active Merchant -- http://activemerchant.org</span><span class='tstring_end'>&quot;</span></span>
+  <span class='rparen'>)</span>
+
+  <span class='id raise'>raise</span> <span class='const'>StandardError</span><span class='period'>.</span><span class='id new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Faulty paypal result: </span><span class='embexpr_beg'>#{</span><span class='id response'>response</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VERIFIED</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>INVALID</span><span class='tstring_end'>&quot;</span></span><span class='rbracket'>]</span><span class='period'>.</span><span class='id include?'>include?</span><span class='lparen'>(</span><span class='id response'>response</span><span class='rparen'>)</span>
+
+  <span class='id response'>response</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>VERIFIED</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="complete?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>complete?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Was the transaction complete?
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id complete?'>complete?</span>
+  <span class='id status'>status</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>COMPLETED</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="invoice-instance_method">
+  
+    - (<tt>Object</tt>) <strong>invoice</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is the invoice which you passed to paypal
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+82
+83
+84</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb', line 82</span>
+
+<span class='kw'>def</span> <span class='id invoice'>invoice</span>
+  <span class='id params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>transaction[0].invoiceId</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="item_id-instance_method">
+  
+    - (<tt>Object</tt>) <strong>item_id</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+This is the item number which we submitted to paypal The custom field is
+also mapped to item_id because PayPal doesn&#8217;t return item_number in
+dispute notifications
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+77
+78
+79</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb', line 77</span>
+
+<span class='kw'>def</span> <span class='id item_id'>item_id</span>
+  <span class='id params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>item_number</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>||</span> <span class='id params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>custom</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="status-instance_method">
+  
+    - (<tt>Object</tt>) <strong>status</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Status of transaction. List of possible values:
+</p>
+<table>
+<tr><td valign="top"><tt>CREATED</tt></td><td></td></tr>
+<tr><td valign="top"><tt>COMPLETED</tt></td><td></td></tr>
+<tr><td valign="top"><tt>INCOMPLETE</tt></td><td></td></tr>
+<tr><td valign="top"><tt>ERROR</tt></td><td></td></tr>
+<tr><td valign="top"><tt>REVERSALERROR</tt></td><td></td></tr>
+<tr><td valign="top"><tt>PROCESSING</tt></td><td></td></tr>
+</table>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb', line 61</span>
+
+<span class='kw'>def</span> <span class='id status'>status</span>
+  <span class='id params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>status</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="test?-instance_method">
+  
+    - (<tt>Boolean</tt>) <strong>test?</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Was this a test transaction?
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <h3>Returns:</h3>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+87
+88
+89</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb', line 87</span>
+
+<span class='kw'>def</span> <span class='id test?'>test?</span>
+  <span class='id params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>test_ipn</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>1</span><span class='tstring_end'>'</span></span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="transaction_id-instance_method">
+  
+    - (<tt>Object</tt>) <strong>transaction_id</strong> 
+  
+
+  
+</p><div class="docstring">
+  <div class="discussion">
+    <p>
+Id of this transaction (paypal number)
+</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id transaction_id'>transaction_id</span>
+  <span class='id params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>transaction[0].id_for_sender_txn</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="type-instance_method">
+  
+    - (<tt>Object</tt>) <strong>type</strong> 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+70
+71
+72</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/integrations/paypal_adaptive_payment/notification.rb', line 70</span>
+
+<span class='kw'>def</span> <span class='id type'>type</span>
+  <span class='id params'>params</span><span class='lbracket'>[</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>action_type</span><span class='tstring_end'>'</span></span><span class='rbracket'>]</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+    
+    <div id="footer">
+  Generated on Thu Oct  6 15:13:05 2011 by 
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.7.2 (ruby-1.9.2).
+</div>
+
+  </body>
+</html>
