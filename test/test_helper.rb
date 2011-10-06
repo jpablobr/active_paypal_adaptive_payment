@@ -1,6 +1,8 @@
+# encoding: utf-8
 $:.unshift File.expand_path('../../lib', __FILE__)
 
 require 'yaml'
+require 'mocha'
 require 'minitest/autorun'
 require 'active_merchant'
 require 'active_paypal_adaptive_payment'
