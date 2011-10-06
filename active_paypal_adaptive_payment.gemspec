@@ -1,7 +1,7 @@
 # encoding: utf-8
 Gem::Specification.new do |s|
   s.name        = "active_paypal_adaptive_payment"
-  s.version     = '0.2.7'
+  s.version     = '0.3.0'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jose Pablo Barrantes"]
   s.email       = ["xjpablobrx@gmail.com"]
