@@ -49,6 +49,10 @@ module ActiveMerchant #:nodoc:
       def refund(options)
         commit('Refund', build_adaptive_refund_details(options))
       end
+      
+      def execute_payment(options)
+        commit('ExecutePayment', build_adaptive_execute_payment_request(options))
+      end
 
       # Send a preapproval request to pay pal
       #
@@ -122,6 +126,20 @@ module ActiveMerchant #:nodoc:
           end
           x.reverseAllParallelPaymentsOnError opts[:reverse_all_parallel_payments_on_error] || 'false'
           x.trackingId opts[:tracking_id] if opts[:tracking_id]
+         end
+      end
+      
+      def build_adaptive_execute_payment_request(opts)
+        @xml = ''
+        xml = Builder::XmlMarkup.new :target => @xml, :indent => 2
+        xml.instruct!
+        xml.ExecutePaymentRequest do |x|
+          x.requestEnvelope do |x|
+            x.detailLevel 'ReturnAll'
+            x.errorLanguage opts[:error_language] ||= 'en_US'
+          end
+          x.payKey opts[:pay_key] if opts.key?(:pay_key)
+          x.fundingPlanId opts[:funding_plan_id] if opts[:funding_plan_id]
          end
       end
 
