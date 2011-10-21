@@ -104,6 +104,7 @@ xml request, raw json response and the URL of the endpoint.
 * Jose Pablo Barrantes (<http://jpablobr.com/>)
 * Zarne Dravitzki (<http://github.com/zarno>)
 * LeviRosol (<https://github.com/LeviRosol>)
+* Florian95 (<https://github.com/Florian95>)
 
 ## Other previous contributors where some code was taken from.
 
