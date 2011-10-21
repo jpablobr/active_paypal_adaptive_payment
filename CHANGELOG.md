@@ -1,3 +1,11 @@
+## 0.3.2
+
+  - build_adaptive_payment_details_request pay_key fix.
+
+## 0.3.1
+
+  - Add Support of ExecutePayment.
+
 ## 0.3.0
 
   - IPN implemeted
