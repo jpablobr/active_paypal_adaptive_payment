@@ -279,6 +279,27 @@ debug method, provides an easy to use debug method for the class.
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#execute_payment-instance_method" title="#execute_payment (instance method)">- (Object) <strong>execute_payment</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#initialize-instance_method" title="#initialize (instance method)">- (PaypalAdaptivePayment) <strong>initialize</strong>(config = {}) </a>
     
 
@@ -469,12 +490,12 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
-70
-71
-72</pre>
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id cancel_preapproval'>cancel_preapproval</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
   <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>CancelPreapproval</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_cancel_preapproval'>build_cancel_preapproval</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -497,12 +518,12 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
-78
-79
-80</pre>
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id convert_currency'>convert_currency</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
   <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ConvertCurrency</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_currency_conversion'>build_currency_conversion</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -536,12 +557,12 @@ debug method, provides an easy to use debug method for the class
       <pre class="lines">
 
 
-87
-88
-89</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 87</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id debug'>debug</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Url: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@url</span><span class='rbrace'>}</span><span class='tstring_content'>\n\n Request: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@xml</span><span class='rbrace'>}</span><span class='tstring_content'> \n\n Response: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@response</span><span class='period'>.</span><span class='id json'>json</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -592,15 +613,43 @@ debug method, provides an easy to use debug method for the class
       <pre class="lines">
 
 
-82
-83
-84</pre>
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 82</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id embedded_flow_url'>embedded_flow_url</span>
   <span class='id test?'>test?</span> <span class='op'>?</span> <span class='const'>EMBEDDED_FLOW_TEST_URL</span> <span class='op'>:</span> <span class='const'>EMBEDDED_FLOW_LIVE_URL</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="execute_payment-instance_method">
+  
+    - (<tt>Object</tt>) <strong>execute_payment</strong>(options) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='id execute_payment'>execute_payment</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ExecutePayment</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_adaptive_execute_payment_request'>build_adaptive_execute_payment_request</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -620,12 +669,12 @@ debug method, provides an easy to use debug method for the class
       <pre class="lines">
 
 
-74
-75
-76</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id preapproval_details_for'>preapproval_details_for</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
   <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>PreapprovalDetails</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_preapproval_details'>build_preapproval_details</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -698,12 +747,12 @@ href="https://www.x.com/docs/DOC-1419">www.x.com/docs/DOC-1419</a>
       <pre class="lines">
 
 
-66
-67
-68</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id preapprove_payment'>preapprove_payment</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
   <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Preapproval</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_preapproval_payment'>build_preapproval_payment</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -774,7 +823,7 @@ href="https://www.x.com/docs/DOC-1419">www.x.com/docs/DOC-1419</a>
 </div>
     
     <div id="footer">
-  Generated on Thu Oct  6 15:13:05 2011 by 
+  Generated on Sat Oct 22 02:54:45 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.2 (ruby-1.9.2).
 </div>
