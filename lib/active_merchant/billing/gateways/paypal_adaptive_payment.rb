@@ -54,6 +54,10 @@ module ActiveMerchant #:nodoc:
         commit('ExecutePayment', build_adaptive_execute_payment_request(options))
       end
 
+      def get_funding_plans(options)
+        commit('GetFundingPlans', build_adaptive_get_funding_plans_request(options))
+      end
+
       # Send a preapproval request to pay pal
       #
       # ==== Options
@@ -148,6 +152,19 @@ module ActiveMerchant #:nodoc:
         xml = Builder::XmlMarkup.new :target => @xml, :indent => 2
         xml.instruct!
         xml.PayRequest do |x|
+          x.requestEnvelope do |x|
+            x.detailLevel 'ReturnAll'
+            x.errorLanguage opts[:error_language] ||= 'en_US'
+          end
+          x.payKey opts[:pay_key]
+        end
+      end
+
+      def build_adaptive_get_funding_plans_request(opts)
+        @xml = ''
+        xml = Builder::XmlMarkup.new :target => @xml, :indent => 2
+        xml.instruct!
+        xml.GetFundingPlans do |x|
           x.requestEnvelope do |x|
             x.detailLevel 'ReturnAll'
             x.errorLanguage opts[:error_language] ||= 'en_US'
@@ -303,7 +320,7 @@ module ActiveMerchant #:nodoc:
       end
 
       def test?
-        Base.gateway_mode == :test
+        @config[:test] || Base.gateway_mode == :test
       end
 
       def action_url(action)
