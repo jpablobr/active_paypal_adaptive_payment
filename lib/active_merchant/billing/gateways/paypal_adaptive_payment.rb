@@ -303,7 +303,7 @@ module ActiveMerchant #:nodoc:
       end
 
       def test?
-        Base.gateway_mode == :test
+        @config[:test] || Base.gateway_mode == :test
       end
 
       def action_url(action)
