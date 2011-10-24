@@ -54,19 +54,6 @@ module ActiveMerchant #:nodoc:
         commit('ExecutePayment', build_adaptive_execute_payment_request(options))
       end
 
-      # Send a preapproval request to pay pal
-      #
-      # ==== Options
-      #
-      # * +:end_date+ - _xs:datetime_ The ending date
-      # * +:start_date+ - _xs:datetime_ The start date (defaults: current)
-      # * +:max_amount+ - _xs:decimal_ The preapproved maximum total amount of all payments.
-      # * +:currency_code+ - The currency code (defaults: USD)
-      # * +:cancel_url+ - URL to redirect the sender’s browser to after canceling the preapproval
-      # * +:return_url+ - URL to redirect the sender’s browser to after the sender has logged into PayPal and confirmed the preapproval
-      # * +:notify_url+ - The URL to which you want all IPN messages for this preapproval to be sent. (Optional)
-      #
-      # To get more details on fields see +Paypal PreApproval API+ at https://www.x.com/docs/DOC-1419
       def preapprove_payment(options)
         commit('Preapproval', build_preapproval_payment(options))
       end
@@ -87,7 +74,6 @@ module ActiveMerchant #:nodoc:
         test? ? EMBEDDED_FLOW_TEST_URL : EMBEDDED_FLOW_LIVE_URL
       end
 
-      #debug method, provides an easy to use debug method for the class
       def debug
         "Url: #{@url}\n\n Request: #{@xml} \n\n Response: #{@response.json}"
       end
@@ -104,10 +90,12 @@ module ActiveMerchant #:nodoc:
             x.errorLanguage opts[:error_language] ||= 'en_US'
           end
           x.actionType 'PAY'
-          x.senderEmail opts[:sender_email] if opts.key?(:sender_email)
+          x.senderEmail opts[:sender_email] if
+            opts.key?(:sender_email)
           x.cancelUrl opts[:cancel_url]
           x.returnUrl opts[:return_url]
-          x.ipnNotificationUrl opts[:ipn_notification_url] if opts[:ipn_notification_url]
+          x.ipnNotificationUrl opts[:ipn_notification_url] if
+            opts[:ipn_notification_url]
           x.memo opts[:memo] if opts.key?(:memo)
           x.custom opts[:custom] if opts.key?(:custom)
           x.feesPayer opts[:fees_payer] if opts[:fees_payer]
@@ -119,12 +107,15 @@ module ActiveMerchant #:nodoc:
                 x.email receiver[:email]
                 x.amount receiver[:amount].to_s
                 x.primary receiver[:primary] if receiver.key?(:primary)
-                x.paymentType receiver[:payment_type] if receiver.key?(:payment_type)
-                x.invoiceId receiver[:invoice_id] if receiver.key?(:invoice_id)
+                x.paymentType receiver[:payment_type] if
+                  receiver.key?(:payment_type)
+                x.invoiceId receiver[:invoice_id] if
+                  receiver.key?(:invoice_id)
               end
             end
           end
-          x.reverseAllParallelPaymentsOnError opts[:reverse_all_parallel_payments_on_error] || 'false'
+          x.reverseAllParallelPaymentsOnError(
+            opts[:reverse_all_parallel_payments_on_error] || 'false')
           x.trackingId opts[:tracking_id] if opts[:tracking_id]
          end
       end
@@ -213,13 +204,15 @@ module ActiveMerchant #:nodoc:
           x.endingDate opts[:end_date].strftime("%Y-%m-%dT%H:%M:%S")
           x.startingDate opts[:start_date].strftime("%Y-%m-%dT%H:%M:%S")
           x.maxTotalAmountOfAllPayments opts[:max_amount]
-          x.maxNumberOfPayments opts[:maxNumberOfPayments] if opts.has_key?(:maxNumberOfPayments)
+          x.maxNumberOfPayments opts[:maxNumberOfPayments] if
+            opts.has_key?(:maxNumberOfPayments)
           x.currencyCode options[:currency_code]
           x.cancelUrl opts[:cancel_url]
           x.returnUrl opts[:return_url]
 
           # notify url
-          x.ipnNotificationUrl opts[:notify_url] if opts.has_key?(:notify_url)
+          x.ipnNotificationUrl opts[:notify_url] if
+            opts.has_key?(:notify_url)
         end
       end
 
@@ -233,7 +226,8 @@ module ActiveMerchant #:nodoc:
             x.errorLanguage options[:error_language] ||= 'en_US'
           end
           x.preapprovalKey options[:preapproval_key]
-          x.getBillingAddress options[:get_billing_address] if options[:get_billing_address]
+          x.getBillingAddress options[:get_billing_address] if
+            options[:get_billing_address]
         end
       end
 
