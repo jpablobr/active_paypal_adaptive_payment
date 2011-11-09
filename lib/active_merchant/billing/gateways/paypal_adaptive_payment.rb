@@ -90,6 +90,9 @@ module ActiveMerchant #:nodoc:
             x.errorLanguage opts[:error_language] ||= 'en_US'
           end
           x.actionType 'PAY'
+          puts "**************"  if opts.key?(:preapproval_key)
+          puts opts[:preapproval_key] if opts.key?(:preapproval_key)
+          puts "**************"  if opts.key?(:preapproval_key)
           x.senderEmail opts[:sender_email] if
             opts.key?(:sender_email)
           x.cancelUrl opts[:cancel_url]
