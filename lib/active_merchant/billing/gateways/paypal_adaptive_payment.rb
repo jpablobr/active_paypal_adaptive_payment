@@ -197,13 +197,15 @@ module ActiveMerchant #:nodoc:
           x.requestEnvelope do |x|
             x.detailLevel 'ReturnAll'
             x.errorLanguage opts[:error_language] ||= 'en_US'
-            x.senderEmail opts[:senderEmail]
+            x.senderEmail opts[:senderEmail] if opts.has_key?[:senderEmail]
           end
 
           # required preapproval fields
           x.endingDate opts[:end_date].strftime("%Y-%m-%dT%H:%M:%S")
           x.startingDate opts[:start_date].strftime("%Y-%m-%dT%H:%M:%S")
           x.maxTotalAmountOfAllPayments opts[:max_amount]
+          x.maxAmountPerPayment opts[:maxAmountPerPayment] if opts.has_key?[:maxAmountPerPayment]
+          x.memo opts[:memo] if opts.has_key?[:memo]
           x.maxNumberOfPayments opts[:maxNumberOfPayments] if
             opts.has_key?(:maxNumberOfPayments)
           x.currencyCode options[:currency_code]
