@@ -28,6 +28,7 @@ module ActiveMerchant #:nodoc:
       end
 
 	    self.test_redirect_url= "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey="
+      self.test_redirect_pre_approval_url= "https://www.sandbox.paypal.com/webscr?cmd=_ap-preapproval&preapprovalkey="
       self.supported_countries = ['US']
       self.homepage_url = 'http://x.com/'
       self.display_name = 'Paypal Adaptive Payments'
@@ -90,8 +91,8 @@ module ActiveMerchant #:nodoc:
             x.errorLanguage opts[:error_language] ||= 'en_US'
           end
           x.actionType 'PAY'
-          x.senderEmail opts[:sender_email] if
-            opts.key?(:sender_email)
+          x.preapprovalKey opts[:preapproval_key] if opts.key?(:preapproval_key)
+          x.senderEmail opts[:sender_email] if opts.key?(:sender_email)
           x.cancelUrl opts[:cancel_url]
           x.returnUrl opts[:return_url]
           x.ipnNotificationUrl opts[:ipn_notification_url] if
@@ -197,13 +198,15 @@ module ActiveMerchant #:nodoc:
           x.requestEnvelope do |x|
             x.detailLevel 'ReturnAll'
             x.errorLanguage opts[:error_language] ||= 'en_US'
-            x.senderEmail opts[:senderEmail]
+            x.senderEmail opts[:senderEmail] if opts.has_key?(:senderEmail)
           end
 
           # required preapproval fields
           x.endingDate opts[:end_date].strftime("%Y-%m-%dT%H:%M:%S")
           x.startingDate opts[:start_date].strftime("%Y-%m-%dT%H:%M:%S")
           x.maxTotalAmountOfAllPayments opts[:max_amount]
+          x.maxAmountPerPayment opts[:maxAmountPerPayment] if opts.has_key?(:maxAmountPerPayment)
+          x.memo opts[:memo] if opts.has_key?(:memo)
           x.maxNumberOfPayments opts[:maxNumberOfPayments] if
             opts.has_key?(:maxNumberOfPayments)
           x.currencyCode options[:currency_code]
