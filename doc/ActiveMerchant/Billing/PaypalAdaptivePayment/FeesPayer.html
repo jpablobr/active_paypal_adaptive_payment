@@ -85,27 +85,7 @@
         <dt id="OPTIONS-constant" class="">OPTIONS =
           
         </dt>
-        <dd><pre class="code">*-
-require 'money'
-require File.dirname(__FILE__) + '/paypal_adaptive_payments/ext'
-require File.dirname(__FILE__) + '/paypal_adaptive_payment_common'
-require File.dirname(__FILE__) + '/paypal_adaptive_payments/exceptions'
-require File.dirname(__FILE__) + '/paypal_adaptive_payments/adaptive_payment_response'
-
-module ActiveMerchant #:nodoc:
-  module Billing #:nodoc:
-
-    class PaypalAdaptivePayment &lt; Gateway # :nodoc
-      include PaypalAdaptivePaymentCommon
-
-      TEST_URL = 'https://svcs.sandbox.paypal.com/AdaptivePayments/'
-      LIVE_URL = 'https://svcs.paypal.com/AdaptivePayments/'
-
-      EMBEDDED_FLOW_TEST_URL = 'https://www.sandbox.paypal.com/webapps/adaptivepayment/flow/pay'
-      EMBEDDED_FLOW_LIVE_URL = 'https://www.paypal.com/webapps/adaptivepayment/flow/pay'
-
-      module FeesPayer
-OPTIONS = %w(SENDER PRIMARYRECEIVER EACHRECEIVER SECONDARYONLY)</pre></dd>
+        <dd><pre class="code"><span class='qwords_beg'>%w(</span><span class='tstring_content'>SENDER</span><span class='words_sep'> </span><span class='tstring_content'>PRIMARYRECEIVER</span><span class='words_sep'> </span><span class='tstring_content'>EACHRECEIVER</span><span class='words_sep'> </span><span class='tstring_content'>SECONDARYONLY</span><span class='words_sep'>)</span></pre></dd>
       
     </dl>
   
@@ -119,9 +99,9 @@ OPTIONS = %w(SENDER PRIMARYRECEIVER EACHRECEIVER SECONDARYONLY)</pre></dd>
 </div>
     
     <div id="footer">
-  Generated on Sat Oct 22 02:54:45 2011 by 
+  Generated on Wed Nov 16 14:12:11 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.2 (ruby-1.9.2).
+  0.7.3 (ruby-1.9.2).
 </div>
 
   </body>
