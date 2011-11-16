@@ -14,14 +14,14 @@ class TestPaypalAdaptivePayment < MiniTest::Unit::TestCase
 
   def test_redirect_url_for
     assert response = @gateway.setup_purchase(fixtures(:pay_options))
-    key = response["payKey"]
+    refute_nil key = response["pay_key"]
     url = @gateway.redirect_url_for(key)
     assert_match /#{key}$/, url, "Could not generate the proper redirect_url_for URL"
   end
 
   def test_redirect_pre_approval_url_for
     assert response = @gateway.setup_purchase(fixtures(:pay_options))
-    key = response["preapprovalKey"]
+    refute_nil key = response["preapprovalKey"]
     url = @gateway.redirect_pre_approval_url_for(key)
     assert_match /#{key}$/, url, "Could not generate the proper redirect_url_for URL"
   end

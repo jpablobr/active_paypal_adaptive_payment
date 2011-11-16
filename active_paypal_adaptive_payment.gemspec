@@ -17,7 +17,7 @@ Gem::Specification.new do |s|
 
   s.add_dependency(%q<activemerchant>, [">= 1.5.1"])
   s.add_dependency(%q<multi_json>, [">= 1.0.0"])
-  s.add_dependency(%q<rash>, [">= 0.3.0"])
+  s.add_dependency(%q<hashie>, [">= 1.2.0"])
   s.add_dependency(%q<money>, [">= 3.6.0"])
   s.add_dependency(%q<mocha>, [">= 0.10.0"])
 end

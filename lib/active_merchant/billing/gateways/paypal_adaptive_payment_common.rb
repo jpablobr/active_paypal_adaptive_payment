@@ -14,8 +14,9 @@ module ActiveMerchant
         test? ? test_redirect_url : live_redirect_url
       end
 
+      # TODO: validate the token presence
       def redirect_url_for(token)
-        redirect_url + token
+        "#{redirect_url}#{token}"
       end
 
       def redirect_pre_approval_url
@@ -23,7 +24,7 @@ module ActiveMerchant
       end
 
       def redirect_pre_approval_url_for(token)
-        redirect_pre_approval_url + token
+        "#{redirect_pre_approval_url}#{token}"
       end
 
     end

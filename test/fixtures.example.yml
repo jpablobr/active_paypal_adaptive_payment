@@ -5,7 +5,7 @@ credentials:
   appid: APP-80W284485P519543T
 
 paydetails_options:
-  paykey: AP-49N53304XXkjh2374P
+  pay_key: AP-49N53304XXkjh2374P
 
 recipients: &recipients
   - :email:  seller_1313041935_biz@gmail.com
