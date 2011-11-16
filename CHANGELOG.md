@@ -1,3 +1,10 @@
+## 0 0.3.3 (16/Nov/11)
+
+  - add functionality to allow a user to redirect to the correct URL
+    when creating a pre-approval request. In addition, the
+    setup_purchase now allows for the preapproval_key to be submitted
+    and passed along to paypal. (LeviRosol (<https://github.com/LeviRosol>))
+
 ## 0.3.2
 
   - build_adaptive_payment_details_request pay_key fix.
