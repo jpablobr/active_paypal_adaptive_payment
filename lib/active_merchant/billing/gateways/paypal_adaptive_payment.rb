@@ -55,6 +55,10 @@ module ActiveMerchant #:nodoc:
         commit('GetPaymentOptions', build_adaptive_get_payment_options_request(options))
       end
 
+      def set_payment_options(options)
+        commit('SetPaymentOptions', build_adaptive_set_payment_options_request(options))
+      end
+
       def refund(options)
         commit('Refund', build_adaptive_refund_details(options))
       end
@@ -181,6 +185,26 @@ module ActiveMerchant #:nodoc:
           x.requestEnvelope do |x|
             x.detailLevel 'ReturnAll'
             x.errorLanguage opts[:error_language] ||= 'en_US'
+          end
+          x.payKey opts[:pay_key]
+        end
+      end
+
+      def build_adaptive_set_payment_options_request(opts)
+        opts[:sender] ||= {}
+        
+        @xml = ''
+        xml = Builder::XmlMarkup.new :target => @xml, :indent => 2
+        xml.instruct!
+        xml.SetPaymentOptionsRequest do |x|
+          x.requestEnvelope do |x|
+            x.detailLevel 'ReturnAll'
+            x.errorLanguage opts[:error_language] ||= 'en_US'
+          end
+          x.senderOptions do |x|
+            x.shareAddress opts[:sender][:share_address] if opts[:sender][:share_address]
+            x.sharePhoneNumber opts[:sender][:share_phone_number] if opts[:sender][:share_phone_number]
+            x.requireShippingAddressSelection opts[:sender][:require_shipping_address_selection] if opts[:sender][:require_shipping_address_selection]
           end
           x.payKey opts[:pay_key]
         end
