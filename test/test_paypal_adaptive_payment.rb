@@ -50,6 +50,11 @@ class TestPaypalAdaptivePayment < MiniTest::Unit::TestCase
     assert_equal true, response.success?, "Unsuccessful Transaction"
   end
 
+  def test_successful_get_payment_options
+    assert response = @gateway.get_payment_options(fixtures(:paydetails_options))
+    assert_equal true, response.success?, "Unsuccessful Transaction"
+  end
+
   def test_successful_preapproval
     assert response = @gateway.preapprove_payment(preapproval_options)
     assert_equal true, response.success?, "Unsuccessful Transaction"

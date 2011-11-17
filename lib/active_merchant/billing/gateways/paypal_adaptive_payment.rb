@@ -51,6 +51,10 @@ module ActiveMerchant #:nodoc:
         commit('GetShippingAddresses', build_adaptive_get_shipping_addresses_request(options))
       end
 
+      def get_payment_options(options)
+        commit('GetPaymentOptions', build_adaptive_get_payment_options_request(options))
+      end
+
       def refund(options)
         commit('Refund', build_adaptive_refund_details(options))
       end
@@ -166,6 +170,19 @@ module ActiveMerchant #:nodoc:
             x.errorLanguage opts[:error_language] ||= 'en_US'
           end
           x.key opts[:pay_key]
+        end
+      end
+
+      def build_adaptive_get_payment_options_request(opts)
+        @xml = ''
+        xml = Builder::XmlMarkup.new :target => @xml, :indent => 2
+        xml.instruct!
+        xml.GetPaymentOptionsRequest do |x|
+          x.requestEnvelope do |x|
+            x.detailLevel 'ReturnAll'
+            x.errorLanguage opts[:error_language] ||= 'en_US'
+          end
+          x.payKey opts[:pay_key]
         end
       end
 
