@@ -75,6 +75,10 @@ module ActiveMerchant #:nodoc:
         test? ? EMBEDDED_FLOW_TEST_URL : EMBEDDED_FLOW_LIVE_URL
       end
 
+      def embedded_flow_url_for(token)
+        "#{embedded_flow_url}?paykey=#{token}"
+      end
+
       def debug
         "Url: #{@url}\n\n Request: #{@xml} \n\n Response: #{@response.json}"
       end
