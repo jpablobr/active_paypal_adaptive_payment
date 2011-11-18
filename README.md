@@ -12,6 +12,9 @@ This library is meant to interface with PayPal's Adaptive Payment Gateway.
 * Peapprovals
 * Refunds
 * Currency conversions
+* getting/setting payment options
+* getting shipping addresses
+* getting a redirect for the embedded pay flow
 * More soon!
 
 ## Installation
@@ -96,8 +99,12 @@ xml request, raw json response and the URL of the endpoint.
 
 ## TODO
 
-* Documentation
-* More tests
+* More/better Documentation.
+* Improve/change the tests implementation by maybe run them off
+  fixture data and use a separate script/test for actually invoking
+  requests to PayPal. This will allow other developers to implement
+  the without being required to set and request the credentials from
+  PayPal process.
 
 ## Contributors
 
