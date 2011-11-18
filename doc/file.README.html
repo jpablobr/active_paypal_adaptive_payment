@@ -67,6 +67,9 @@
 <li>Peapprovals</li>
 <li>Refunds</li>
 <li>Currency conversions</li>
+<li>getting/setting payment options</li>
+<li>getting shipping addresses</li>
+<li>getting a redirect for the embedded pay flow</li>
 <li>More soon!</li>
 </ul>
 
@@ -160,8 +163,12 @@ xml request, raw json response and the URL of the endpoint.</p>
 <h2>TODO</h2>
 
 <ul>
-<li>Documentation</li>
-<li>More tests</li>
+<li>More/better Documentation.</li>
+<li>Improve/change the tests implementation by maybe run them off
+fixture data and use a separate script/test for actually invoking
+requests to PayPal. This will allow other developers to implement
+the without being required to set and request the credentials from
+PayPal process.</li>
 </ul>
 
 
@@ -173,6 +180,7 @@ xml request, raw json response and the URL of the endpoint.</p>
 <li>LeviRosol (<a href="https://github.com/LeviRosol">https://github.com/LeviRosol</a>)</li>
 <li>Florian95 (<a href="https://github.com/Florian95">https://github.com/Florian95</a>)</li>
 <li>akichatov (<a href="https://github.com/akichatov">https://github.com/akichatov</a>)</li>
+<li>Patrick Sinclair (<a href="https://github.com/metade">https://github.com/metade</a>)</li>
 </ul>
 
 
@@ -255,7 +263,7 @@ SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
 </div></div>
     
     <div id="footer">
-  Generated on Wed Nov 16 21:12:45 2011 by 
+  Generated on Sat Nov 19 07:12:11 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.3 (ruby-1.9.2).
 </div>

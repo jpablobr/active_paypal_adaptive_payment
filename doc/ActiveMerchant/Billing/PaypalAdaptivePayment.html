@@ -277,7 +277,70 @@
         <li class="public ">
   <span class="summary_signature">
     
+      <a href="#embedded_flow_url_for-instance_method" title="#embedded_flow_url_for (instance method)">- (Object) <strong>embedded_flow_url_for</strong>(token) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
       <a href="#execute_payment-instance_method" title="#execute_payment (instance method)">- (Object) <strong>execute_payment</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_payment_options-instance_method" title="#get_payment_options (instance method)">- (Object) <strong>get_payment_options</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_shipping_addresses-instance_method" title="#get_shipping_addresses (instance method)">- (Object) <strong>get_shipping_addresses</strong>(options) </a>
     
 
     
@@ -367,6 +430,27 @@ A new instance of PaypalAdaptivePayment.
   <span class="summary_signature">
     
       <a href="#refund-instance_method" title="#refund (instance method)">- (Object) <strong>refund</strong>(options) </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'></div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#set_payment_options-instance_method" title="#set_payment_options (instance method)">- (Object) <strong>set_payment_options</strong>(options) </a>
     
 
     
@@ -486,12 +570,12 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
-62
-63
-64</pre>
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id cancel_preapproval'>cancel_preapproval</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
   <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>CancelPreapproval</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_cancel_preapproval'>build_cancel_preapproval</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -514,12 +598,12 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
-70
-71
-72</pre>
+82
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 82</span>
 
 <span class='kw'>def</span> <span class='id convert_currency'>convert_currency</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
   <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ConvertCurrency</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_currency_conversion'>build_currency_conversion</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -542,12 +626,12 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
-78
-79
-80</pre>
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 94</span>
 
 <span class='kw'>def</span> <span class='id debug'>debug</span>
   <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Url: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@url</span><span class='rbrace'>}</span><span class='tstring_content'>\n\n Request: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@xml</span><span class='rbrace'>}</span><span class='tstring_content'> \n\n Response: </span><span class='embexpr_beg'>#{</span><span class='ivar'>@response</span><span class='period'>.</span><span class='id json'>json</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
@@ -598,15 +682,43 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
-74
-75
-76</pre>
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 74</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id embedded_flow_url'>embedded_flow_url</span>
   <span class='id test?'>test?</span> <span class='op'>?</span> <span class='const'>EMBEDDED_FLOW_TEST_URL</span> <span class='op'>:</span> <span class='const'>EMBEDDED_FLOW_LIVE_URL</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="embedded_flow_url_for-instance_method">
+  
+    - (<tt>Object</tt>) <strong>embedded_flow_url_for</strong>(token) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 90</span>
+
+<span class='kw'>def</span> <span class='id embedded_flow_url_for'>embedded_flow_url_for</span><span class='lparen'>(</span><span class='id token'>token</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id embedded_flow_url'>embedded_flow_url</span><span class='rbrace'>}</span><span class='tstring_content'>?paykey=</span><span class='embexpr_beg'>#{</span><span class='id token'>token</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -626,6 +738,34 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
+66
+67
+68</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 66</span>
+
+<span class='kw'>def</span> <span class='id execute_payment'>execute_payment</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ExecutePayment</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_adaptive_execute_payment_request'>build_adaptive_execute_payment_request</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_payment_options-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_payment_options</strong>(options) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
 54
 55
 56</pre>
@@ -633,8 +773,36 @@ A new instance of PaypalAdaptivePayment
     <td>
       <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 54</span>
 
-<span class='kw'>def</span> <span class='id execute_payment'>execute_payment</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
-  <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>ExecutePayment</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_adaptive_execute_payment_request'>build_adaptive_execute_payment_request</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>def</span> <span class='id get_payment_options'>get_payment_options</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>GetPaymentOptions</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_adaptive_get_payment_options_request'>build_adaptive_get_payment_options_request</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="get_shipping_addresses-instance_method">
+  
+    - (<tt>Object</tt>) <strong>get_shipping_addresses</strong>(options) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+50
+51
+52</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 50</span>
+
+<span class='kw'>def</span> <span class='id get_shipping_addresses'>get_shipping_addresses</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>GetShippingAddresses</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_adaptive_get_shipping_addresses_request'>build_adaptive_get_shipping_addresses_request</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -654,12 +822,12 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
-66
-67
-68</pre>
+78
+79
+80</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 66</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 78</span>
 
 <span class='kw'>def</span> <span class='id preapproval_details_for'>preapproval_details_for</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
   <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>PreapprovalDetails</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_preapproval_details'>build_preapproval_details</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -682,12 +850,12 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
-58
-59
-60</pre>
+70
+71
+72</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id preapprove_payment'>preapprove_payment</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
   <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Preapproval</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_preapproval_payment'>build_preapproval_payment</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -710,15 +878,43 @@ A new instance of PaypalAdaptivePayment
       <pre class="lines">
 
 
-50
-51
-52</pre>
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 50</span>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 62</span>
 
 <span class='kw'>def</span> <span class='id refund'>refund</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
   <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>Refund</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_adaptive_refund_details'>build_adaptive_refund_details</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <p class="signature " id="set_payment_options-instance_method">
+  
+    - (<tt>Object</tt>) <strong>set_payment_options</strong>(options) 
+  
+
+  
+</p><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id set_payment_options'>set_payment_options</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span>
+  <span class='id commit'>commit</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>SetPaymentOptions</span><span class='tstring_end'>'</span></span><span class='comma'>,</span> <span class='id build_adaptive_set_payment_options_request'>build_adaptive_set_payment_options_request</span><span class='lparen'>(</span><span class='id options'>options</span><span class='rparen'>)</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -758,7 +954,7 @@ A new instance of PaypalAdaptivePayment
 </div>
     
     <div id="footer">
-  Generated on Wed Nov 16 21:12:45 2011 by 
+  Generated on Sat Nov 19 07:12:11 2011 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.7.3 (ruby-1.9.2).
 </div>
