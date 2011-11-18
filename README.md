@@ -81,9 +81,16 @@ Maybe also check the tests for a sample implementation.
 
 ## Testing
 
-First modify the values in `test/fixtures.yml` to fit your app credentials.
+First modify the `test/fixtures.yml` to fit your app credentials (You
+will need at least a PayPal developer account).
 
-After that you can just execute them via `autotest`.
+After that execute them via:
+
+    $ autotest
+
+or simply:
+
+    $ ruby -Ilib test/test_paypal_adaptive_payment.rb
 
 ## Debugging
 
