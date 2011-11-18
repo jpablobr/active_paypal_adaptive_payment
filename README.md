@@ -106,6 +106,7 @@ xml request, raw json response and the URL of the endpoint.
 * LeviRosol (<https://github.com/LeviRosol>)
 * Florian95 (<https://github.com/Florian95>)
 * akichatov (<https://github.com/akichatov>)
+* Patrick Sinclair (<https://github.com/metade>)
 
 ## Other previous contributors where some code was taken from.
 
