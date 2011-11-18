@@ -1,6 +1,5 @@
 require 'multi_json'
 require 'hashie'
-require 'rash'
 
 module ActiveMerchant
   module Billing
