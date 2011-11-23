@@ -31,24 +31,23 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
 
 ### Init
 
-    gateway =
-          ActiveMerchant::Billing::PaypalAdaptivePayment.new(
-             :login => "acutio_1313133342_biz_api1.gmail.com",
-             :password => "1255043567",
-             :signature => "Abg0gYcQlsdkls2HDJkKtA-p6pqhA1k-KTYE0Gcy1diujFio4io5Vqjf",
-             :appid => "APP-80W284485P519543T" )
+    gateway =  ActiveMerchant::Billing::PaypalAdaptivePayment.new(
+      :login => "acutio_1313133342_biz_api1.gmail.com",
+      :password => "1255043567",
+      :signature => "Abg0gYcQlsdkls2HDJkKtA-p6pqhA1k-KTYE0Gcy1diujFio4io5Vqjf",
+      :appid => "APP-80W284485P519543T" )
 
 ### Pre-approved paymen
 
-      gateway.preapprove_payment (
-         :return_url => "returnURL",
-         :cancel_url => "cancelURL",
-         :senderEmail =>"email address of sender",
-         :start_date => Time.now,
-         :end_date => Time.now + (60*60*24) * 30,
-         :currency_code =>"currency code",
-         :max_amount => "maxTotalAmountOfAllPayments",
-         :maxNumberOfPayments => "maxNumberOfPayments" )
+    gateway.preapprove_payment (
+      :return_url => "returnURL",
+      :cancel_url => "cancelURL",
+      :senderEmail =>"email address of sender",
+      :start_date => Time.now,
+      :end_date => Time.now + (60*60*24) * 30,
+      :currency_code =>"currency code",
+      :max_amount => "maxTotalAmountOfAllPayments",
+      :maxNumberOfPayments => "maxNumberOfPayments" )
 
 ### Cancel pre-approved payment
 
@@ -72,7 +71,7 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
       )
 
       # for redirecting the customer to the actual paypal site to finish the payment.
-     redirect_to (gateway.redirect_url_for(response["payKey"]))
+      redirect_to (gateway.redirect_url_for(response["payKey"]))
     end
 
 Set the `:primary` flag to `false` for each recipient for a split payment.
@@ -84,11 +83,7 @@ Maybe also check the tests for a sample implementation.
 First modify the `test/fixtures.yml` to fit your app credentials (You
 will need at least a PayPal developer account).
 
-After that execute them via:
-
-    $ autotest
-
-or simply:
+After that you can run them like this:
 
     $ ruby -Ilib test/test_paypal_adaptive_payment.rb
 
