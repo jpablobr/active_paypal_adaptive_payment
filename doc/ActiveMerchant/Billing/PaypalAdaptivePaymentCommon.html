@@ -245,13 +245,13 @@ TODO: validate the token presence.
     <td>
       <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment_common.rb', line 4</span>
 
-<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id included'>included</span><span class='lparen'>(</span><span class='id base'>base</span><span class='rparen'>)</span>
-  <span class='id base'>base</span><span class='period'>.</span><span class='id cattr_accessor'>cattr_accessor</span> <span class='symbol'>:test_redirect_url</span>
-  <span class='id base'>base</span><span class='period'>.</span><span class='id cattr_accessor'>cattr_accessor</span> <span class='symbol'>:live_redirect_url</span>
-  <span class='id base'>base</span><span class='period'>.</span><span class='id cattr_accessor'>cattr_accessor</span> <span class='symbol'>:test_redirect_pre_approval_url</span>
-  <span class='id base'>base</span><span class='period'>.</span><span class='id cattr_accessor'>cattr_accessor</span> <span class='symbol'>:live_redirect_pre_approval_url</span>
-  <span class='id base'>base</span><span class='period'>.</span><span class='id live_redirect_url'>live_redirect_url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https://www.paypal.com/webscr?cmd=_ap-payment&amp;paykey=</span><span class='tstring_end'>'</span></span>
-  <span class='id base'>base</span><span class='period'>.</span><span class='id live_redirect_pre_approval_url'>live_redirect_pre_approval_url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https://www.paypal.com/webscr?cmd=_ap-preapproval&amp;preapprovalkey=</span><span class='tstring_end'>'</span></span>
+<span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_included'>included</span><span class='lparen'>(</span><span class='id identifier rubyid_base'>base</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_cattr_accessor'>cattr_accessor</span> <span class='symbol'>:test_redirect_url</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_cattr_accessor'>cattr_accessor</span> <span class='symbol'>:live_redirect_url</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_cattr_accessor'>cattr_accessor</span> <span class='symbol'>:test_redirect_pre_approval_url</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_cattr_accessor'>cattr_accessor</span> <span class='symbol'>:live_redirect_pre_approval_url</span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_live_redirect_url'>live_redirect_url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https://www.paypal.com/webscr?cmd=_ap-payment&amp;paykey=</span><span class='tstring_end'>'</span></span>
+  <span class='id identifier rubyid_base'>base</span><span class='period'>.</span><span class='id identifier rubyid_live_redirect_pre_approval_url'>live_redirect_pre_approval_url</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>'</span><span class='tstring_content'>https://www.paypal.com/webscr?cmd=_ap-preapproval&amp;preapprovalkey=</span><span class='tstring_end'>'</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -284,8 +284,8 @@ TODO: validate the token presence.
     <td>
       <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment_common.rb', line 22</span>
 
-<span class='kw'>def</span> <span class='id redirect_pre_approval_url'>redirect_pre_approval_url</span>
-  <span class='id test?'>test?</span> <span class='op'>?</span> <span class='id test_redirect_pre_approval_url'>test_redirect_pre_approval_url</span> <span class='op'>:</span> <span class='id live_redirect_pre_approval_url'>live_redirect_pre_approval_url</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_redirect_pre_approval_url'>redirect_pre_approval_url</span>
+  <span class='id identifier rubyid_test?'>test?</span> <span class='op'>?</span> <span class='id identifier rubyid_test_redirect_pre_approval_url'>test_redirect_pre_approval_url</span> <span class='op'>:</span> <span class='id identifier rubyid_live_redirect_pre_approval_url'>live_redirect_pre_approval_url</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -312,8 +312,8 @@ TODO: validate the token presence.
     <td>
       <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment_common.rb', line 26</span>
 
-<span class='kw'>def</span> <span class='id redirect_pre_approval_url_for'>redirect_pre_approval_url_for</span><span class='lparen'>(</span><span class='id token'>token</span><span class='rparen'>)</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id redirect_pre_approval_url'>redirect_pre_approval_url</span><span class='rbrace'>}</span><span class='embexpr_beg'>#{</span><span class='id token'>token</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>def</span> <span class='id identifier rubyid_redirect_pre_approval_url_for'>redirect_pre_approval_url_for</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_redirect_pre_approval_url'>redirect_pre_approval_url</span><span class='rbrace'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_token'>token</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -340,8 +340,8 @@ TODO: validate the token presence.
     <td>
       <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment_common.rb', line 13</span>
 
-<span class='kw'>def</span> <span class='id redirect_url'>redirect_url</span>
-  <span class='id test?'>test?</span> <span class='op'>?</span> <span class='id test_redirect_url'>test_redirect_url</span> <span class='op'>:</span> <span class='id live_redirect_url'>live_redirect_url</span>
+<span class='kw'>def</span> <span class='id identifier rubyid_redirect_url'>redirect_url</span>
+  <span class='id identifier rubyid_test?'>test?</span> <span class='op'>?</span> <span class='id identifier rubyid_test_redirect_url'>test_redirect_url</span> <span class='op'>:</span> <span class='id identifier rubyid_live_redirect_url'>live_redirect_url</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -380,8 +380,8 @@ TODO: validate the token presence
     <td>
       <pre class="code"><span class="info file"># File 'lib/active_merchant/billing/gateways/paypal_adaptive_payment_common.rb', line 18</span>
 
-<span class='kw'>def</span> <span class='id redirect_url_for'>redirect_url_for</span><span class='lparen'>(</span><span class='id token'>token</span><span class='rparen'>)</span>
-  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id redirect_url'>redirect_url</span><span class='rbrace'>}</span><span class='embexpr_beg'>#{</span><span class='id token'>token</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
+<span class='kw'>def</span> <span class='id identifier rubyid_redirect_url_for'>redirect_url_for</span><span class='lparen'>(</span><span class='id identifier rubyid_token'>token</span><span class='rparen'>)</span>
+  <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_redirect_url'>redirect_url</span><span class='rbrace'>}</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_token'>token</span><span class='rbrace'>}</span><span class='tstring_end'>&quot;</span></span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -393,9 +393,9 @@ TODO: validate the token presence
 </div>
     
     <div id="footer">
-  Generated on Sat Nov 19 07:12:11 2011 by 
+  Generated on Mon Jan 23 05:04:29 2012 by 
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
-  0.7.3 (ruby-1.9.2).
+  0.7.4 (ruby-1.9.2).
 </div>
 
   </body>

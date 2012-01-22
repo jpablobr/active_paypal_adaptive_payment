@@ -83,6 +83,11 @@ module ActiveMerchant #:nodoc:
             params['transaction[0].invoiceId']
           end
 
+          # This is the amount which you passed to paypal
+          def amount
+            params['transaction[0].amount']
+          end
+
           # Was this a test transaction?
           def test?
             params['test_ipn'] == '1'
