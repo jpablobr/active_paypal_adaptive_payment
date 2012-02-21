@@ -1,7 +1,6 @@
 require 'rake'
 require 'rake/clean'
 require 'rake/testtask'
-require 'yard'
 require "bundler/gem_tasks"
 
 desc "Default Task"
