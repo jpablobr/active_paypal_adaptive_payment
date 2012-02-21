@@ -1,4 +1,6 @@
-# Active PayPal Adaptive Payment
+# Active PayPal Adaptive Payment [![Build Status](https://secure.travis-ci.org/jpablobr/active_paypal_adaptive_payment.png?branch=master)][travis]
+
+[travis]: http://travis-ci.org/jpablobr/active_paypal_adaptive_payment
 
 This library is meant to interface with PayPal's Adaptive Payment Gateway.
 
