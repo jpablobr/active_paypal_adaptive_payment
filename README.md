@@ -78,6 +78,19 @@ Set the `:primary` flag to `false` for each recipient for a split payment.
 
 Maybe also check the tests for a sample implementation.
 
+Notes:
+
+In `development` environment it's very important to define
+ActiveMerchant environment you will be using to test your app like so:
+
+```ruby
+#config/environments/production.rb
+App::Application.configure do
+  config.setting...
+end
+ActiveMerchant::Billing::Base.mode = :test
+```
+
 ## Testing
 
 First modify the `test/fixtures.yml` to fit your app credentials (You
