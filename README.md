@@ -84,7 +84,7 @@ In `development` environment it's very important to define
 ActiveMerchant environment you will be using to test your app like so:
 
 ```ruby
-#config/environments/production.rb
+#config/environments/{environment.rb}
 App::Application.configure do
   config.setting...
 end
