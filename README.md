@@ -129,6 +129,7 @@ xml request, raw json response and the URL of the endpoint.
 * Florian95 (<https://github.com/Florian95>)
 * akichatov (<https://github.com/akichatov>)
 * Patrick Sinclair (<https://github.com/metade>)
+* Mike Pence (<https://github.com/mikepence>)
 
 ## Other previous contributors where some code was taken from.
 
