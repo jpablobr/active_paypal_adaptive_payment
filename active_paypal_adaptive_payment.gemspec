@@ -1,7 +1,7 @@
 # encoding: utf-8
 Gem::Specification.new do |s|
   s.name        = "active_paypal_adaptive_payment"
-  s.version     = '0.3.8'
+  s.version     = '0.3.9'
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Jose Pablo Barrantes"]
   s.email       = ["xjpablobrx@gmail.com"]
@@ -15,7 +15,7 @@ Gem::Specification.new do |s|
   s.files = Dir.glob("lib/**/*") + %w(MIT-LICENSE README.md CHANGELOG.md)
   s.require_path = %w(lib)
 
-  s.add_dependency(%q<activemerchant>, ["~> 1.5.1"])
+  s.add_dependency(%q<activemerchant>, [">= 1.5.1"])
   s.add_dependency(%q<multi_json>, [">= 1.0.0"])
   s.add_dependency(%q<hashie>, [">= 1.2.0"])
   s.add_dependency(%q<money>, [">= 3.6.0"])
