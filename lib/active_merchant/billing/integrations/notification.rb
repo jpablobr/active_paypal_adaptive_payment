@@ -1,7 +1,7 @@
 # encoding: utf-8
-module ActiveMerchant #:nodoc:
-  module Billing #:nodoc:
-    module Integrations #:nodoc:
+module ActiveMerchant
+  module Billing
+    module Integrations
       class Notification
 
         private

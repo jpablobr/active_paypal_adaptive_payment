@@ -1,3 +1,7 @@
+## 0 0.3.10 (2012-03-30)
+
+  - Added referrerCode in SetPaymentOptions request (by njvitto)
+  
 ## 0 0.3.3 (16/Nov/11)
 
   - add functionality to allow a user to redirect to the correct URL

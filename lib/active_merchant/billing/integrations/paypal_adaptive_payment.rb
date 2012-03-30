@@ -1,7 +1,7 @@
 # encoding: utf-8
-module ActiveMerchant #:nodoc:
-  module Billing #:nodoc:
-    module Integrations #:nodoc:
+module ActiveMerchant
+  module Billing
+    module Integrations
       module PaypalAdaptivePayment
         autoload :Return, 'active_merchant/billing/integrations/paypal_adaptive_payment/return.rb'
         autoload :Helper, 'active_merchant/billing/integrations/paypal_adaptive_payment/helper.rb'

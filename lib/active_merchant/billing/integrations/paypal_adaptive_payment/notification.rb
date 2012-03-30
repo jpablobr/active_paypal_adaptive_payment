@@ -1,9 +1,9 @@
 # encoding: utf-8
 require 'net/http'
 
-module ActiveMerchant #:nodoc:
-  module Billing #:nodoc:
-    module Integrations #:nodoc:
+module ActiveMerchant
+  module Billing
+    module Integrations
       module PaypalAdaptivePayment
         # Parser and handler for incoming Instant payment notifications from paypal.
         # The Example shows a typical handler in a rails application. Note that this
@@ -115,9 +115,9 @@ module ActiveMerchant #:nodoc:
             payload =  raw
 
             response = ssl_post(Paypal.service_url + '?cmd=_notify-validate', payload,
-              'Content-Length' => "#{payload.size}",
-              'User-Agent'     => "Active Merchant -- http://activemerchant.org"
-            )
+                           'Content-Length' => "#{payload.size}",
+                           'User-Agent'     => "Active Merchant -- http://activemerchant.org"
+                           )
 
             raise StandardError.new("Faulty paypal result: #{response}") unless ["VERIFIED", "INVALID"].include?(response)
 

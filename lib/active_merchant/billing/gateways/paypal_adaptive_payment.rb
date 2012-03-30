@@ -5,10 +5,10 @@ require File.dirname(__FILE__) + '/paypal_adaptive_payment_common'
 require File.dirname(__FILE__) + '/paypal_adaptive_payments/exceptions'
 require File.dirname(__FILE__) + '/paypal_adaptive_payments/adaptive_payment_response'
 
-module ActiveMerchant #:nodoc:
-  module Billing #:nodoc:
+module ActiveMerchant
+  module Billing
 
-    class PaypalAdaptivePayment < Gateway # :nodoc
+    class PaypalAdaptivePayment < Gateway
       include PaypalAdaptivePaymentCommon
 
       TEST_URL = 'https://svcs.sandbox.paypal.com/AdaptivePayments/'
@@ -27,7 +27,7 @@ module ActiveMerchant #:nodoc:
         TYPES.each { |pt| const_set(pt, pt) }
       end
 
-	self.test_redirect_url= "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey="
+      self.test_redirect_url= "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey="
       self.test_redirect_pre_approval_url= "https://www.sandbox.paypal.com/webscr?cmd=_ap-preapproval&preapprovalkey="
       self.supported_countries = ['US']
       self.homepage_url = 'http://x.com/'
@@ -192,7 +192,7 @@ module ActiveMerchant #:nodoc:
 
       def build_adaptive_set_payment_options_request(opts)
         opts[:sender] ||= {}
-        
+
         @xml = ''
         xml = Builder::XmlMarkup.new :target => @xml, :indent => 2
         xml.instruct!
@@ -369,7 +369,6 @@ module ActiveMerchant #:nodoc:
       def action_url(action)
         @url = URI.parse(endpoint_url + action)
       end
-
     end
   end
 end
