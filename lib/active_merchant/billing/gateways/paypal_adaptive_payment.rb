@@ -27,7 +27,7 @@ module ActiveMerchant #:nodoc:
         TYPES.each { |pt| const_set(pt, pt) }
       end
 
-	    self.test_redirect_url= "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey="
+	self.test_redirect_url= "https://www.sandbox.paypal.com/webscr?cmd=_ap-payment&paykey="
       self.test_redirect_pre_approval_url= "https://www.sandbox.paypal.com/webscr?cmd=_ap-preapproval&preapprovalkey="
       self.supported_countries = ['US']
       self.homepage_url = 'http://x.com/'
@@ -205,6 +205,7 @@ module ActiveMerchant #:nodoc:
             x.shareAddress opts[:sender][:share_address] if opts[:sender][:share_address]
             x.sharePhoneNumber opts[:sender][:share_phone_number] if opts[:sender][:share_phone_number]
             x.requireShippingAddressSelection opts[:sender][:require_shipping_address_selection] if opts[:sender][:require_shipping_address_selection]
+            x.referrerCode opts[:sender][:referrerCode] if opts[:sender][:referrerCode]
           end
           x.payKey opts[:pay_key]
         end
