@@ -1,3 +1,8 @@
+## 0 0.3.11 (2012-04-28)
+
+  - Added option :action_type to build_adaptive_payment_pay_request to enable delayed chained payments (3df6948) by eldoy
+  
+  
 ## 0 0.3.10 (2012-03-30)
 
   - Added referrerCode in SetPaymentOptions request (by njvitto)
