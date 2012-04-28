@@ -131,6 +131,7 @@ xml request, raw json response and the URL of the endpoint.
 * Patrick Sinclair (<https://github.com/metade>)
 * Mike Pence (<https://github.com/mikepence>)
 * Nicola Junior Vitto (<https://github.com/njvitto>)
+* Vidar Eldøy (https://github.com/eldoy)
 
 ## Other previous contributors where some code was taken from.
 
