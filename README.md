@@ -91,6 +91,54 @@ end
 ActiveMerchant::Billing::Base.mode = :test
 ```
 
+### Setting advanced payment and invoice options
+
+To be able to set additional payment and invoice options, such as item names,
+shipping costs, custom logos, etc., you must first create a payment, then set
+the options and then direct the user to the payment page:
+
+```ruby
+purchase = gateway.setup_purchase(
+  :action_type => "CREATE", # This is in contrast to the default PAY action
+  …                         # as above
+)
+
+gateway.set_payment_options(
+  :display_options => {
+    :business_name    => "Your Business",
+    :header_image_url => "http://cdn.yourbusiness.com/logo-for-paypal.png"
+  },
+  :pay_key => purchase["payKey"],
+  :receiver_options => [
+    {
+      :description => "Your purchase of XYZ",
+      :invoice_data => {
+        :item => [
+          { :name => "Item #1", :item_count => 1, :item_price => 100, :price => 100 },
+          { :name => "Item #2", :item_count => 2, :item_price => 10, :price => 20 }
+        ],
+        :total_shipping => 5,
+        :total_tax => 10
+      },
+      :receiver => { :email => "receiver1@example.com" }
+    },
+    {
+      :description => "XYZ Processing fee",
+      :invoice_data => {
+        :item => [{ :name => "Fee", :item_count => 1, :item_price => 10, :price => 10 }]
+      },
+      :receiver => { :email => "receiver2@example.com" }
+    }
+  ]
+)
+
+redirect_to(gateway.redirect_url_for(purchase["payKey"]))
+```
+
+See the implementation of ActiveMerchant::Billing::PaypalAdaptivePayment#build_adaptive_set_payment_options_request
+for all available options and [Operation SetPaymentOptions API](https://cms.paypal.com/cms_content/US/en_US/files/developer/PP_AdaptivePayments.pdf)
+for a description of them.
+
 ## Testing
 
 First modify the `test/fixtures.yml` to fit your app credentials (You
