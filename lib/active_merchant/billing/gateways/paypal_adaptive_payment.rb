@@ -215,6 +215,38 @@ module ActiveMerchant
               x.businessName opts[:display_options][:business_name] if opts[:display_options][:business_name]
             end
           end
+          opts[:receiver_options].try(:each) do |receiver_options|
+            x.receiverOptions do |x|
+              x.description receiver_options[:description] if receiver_options[:description]
+              x.customId receiver_options[:custom_id] if receiver_options[:custom_id]
+              unless receiver_options[:invoice_data].blank?
+                x.invoiceData do |x|
+                  receiver_options[:invoice_data][:item].try(:each) do |item|
+                    x.item do |x|
+                      x.name item[:name] if item[:name]
+                      x.identifier item[:identifier] if item[:identifier]
+                      x.price item[:price] if item[:price]
+                      x.itemPrice item[:item_price] if item[:item_price]
+                      x.itemCount item[:item_count] if item[:item_count]
+                    end
+                  end
+                  x.totalTax receiver_options[:invoice_data][:total_tax] if receiver_options[:invoice_data][:total_tax]
+                  x.totalShipping receiver_options[:invoice_data][:total_shipping] if receiver_options[:invoice_data][:total_shipping]
+                end
+              end
+              x.receiver do |x|
+                x.email receiver_options[:receiver][:email] if receiver_options[:receiver][:email]
+                unless receiver_options[:receiver][:phone].blank?
+                  x.phone do |x|
+                    x.countryCode receiver_options[:receiver][:phone][:country_code]
+                    x.phoneNumber receiver_options[:receiver][:phone][:phone_number]
+                    x.extension receiver_options[:receiver][:phone][:extension] if receiver_options[:receiver][:phone][:extension]
+                  end
+                end
+              end
+              x.referrerCode receiver_options[:referrer_code] if receiver_options[:referrer_code]
+            end
+          end
           x.payKey opts[:pay_key]
         end
       end
