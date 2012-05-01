@@ -9,7 +9,7 @@ This library is meant to interface with PayPal's Adaptive Payment Gateway.
 ## Supported
 
 * Payments
-* Peapprovals
+* Preapprovals
 * Refunds
 * Currency conversions
 * getting/setting payment options
@@ -37,7 +37,7 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
       :signature => "Abg0gYcQlsdkls2HDJkKtA-p6pqhA1k-KTYE0Gcy1diujFio4io5Vqjf",
       :appid => "APP-80W284485P519543T" )
 
-### Pre-approved paymen
+### Pre-approved payment
 
     gateway.preapprove_payment (
       :return_url => "returnURL",
