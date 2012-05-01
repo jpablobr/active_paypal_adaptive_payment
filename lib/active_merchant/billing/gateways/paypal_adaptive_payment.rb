@@ -207,6 +207,14 @@ module ActiveMerchant
             x.requireShippingAddressSelection opts[:sender][:require_shipping_address_selection] if opts[:sender][:require_shipping_address_selection]
             x.referrerCode opts[:sender][:referrerCode] if opts[:sender][:referrerCode]
           end
+          unless opts[:display_options].blank?
+            x.displayOptions do |x|
+              x.emailHeaderImageUrl opts[:display_options][:email_header_image_url] if opts[:display_options][:email_header_image_url]
+              x.emailMarketingImageUrl opts[:display_options][:email_marketing_image_url] if opts[:display_options][:email_marketing_image_url]
+              x.headerImageUrl opts[:display_options][:header_image_url] if opts[:display_options][:header_image_url]
+              x.businessName opts[:display_options][:business_name] if opts[:display_options][:business_name]
+            end
+          end
           x.payKey opts[:pay_key]
         end
       end
