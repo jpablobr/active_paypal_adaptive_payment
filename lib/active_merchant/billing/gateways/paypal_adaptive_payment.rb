@@ -315,6 +315,7 @@ module ActiveMerchant
           x.currencyCode options[:currency_code]
           x.cancelUrl opts[:cancel_url]
           x.returnUrl opts[:return_url]
+          x.displayMaxTotalAmount opts[:displayMaxTotalAmount] if opts.has_key?(:displayMaxTotalAmount)
 
           # notify url
           x.ipnNotificationUrl opts[:notify_url] if
