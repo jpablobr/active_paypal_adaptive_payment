@@ -1,7 +1,10 @@
+## 0 0.3.12 (2012-05-18)
+  - Added option displayMaxTotalAmount to build_preapproval_payment to display amount with paypal on payment (04b37c9) by eldoy
+
 ## 0 0.3.12 (2012-05-02)
 
   - Add displayOptions and receiverOptions support to
-    SetPaymentOptionsRequest (Niels Ganser) 597ecad
+    SetPaymentOptionsRequest (Niels Ganser) by 597ecad
   
 ## 0 0.3.11 (2012-04-28)
 
