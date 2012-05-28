@@ -34,7 +34,7 @@ module ActiveMerchant
       self.display_name = 'Paypal Adaptive Payments'
 
       def initialize(config = {})
-        requires!(config, :login, :password, :signature, :appid)
+        requires!(config, :login, :password, :signature)
         @config = config.dup
         super
       end
