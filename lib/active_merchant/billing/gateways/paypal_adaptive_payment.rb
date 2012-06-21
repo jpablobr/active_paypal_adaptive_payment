@@ -396,6 +396,10 @@ module ActiveMerchant
         request.content_type = 'text/xml'
         server = Net::HTTP.new(@url.host, 443)
         server.use_ssl = true
+        # OSX: sudo port install curl-ca-bundle
+        server.verify_mode = OpenSSL::SSL::VERIFY_PEER
+        server.ca_path = '/etc/ssl/certs' if File.exists?('/etc/ssl/certs') # Ubuntu
+        server.ca_file = '/opt/local/share/curl/curl-ca-bundle.crt' if File.exists?('/opt/local/share/curl/curl-ca-bundle.crt') # Mac OS X
         server.start { |http| http.request(request) }.body
       end
 
