@@ -15,7 +15,7 @@ module ActiveMerchant
         @json = json
         @response = Hashie::Rash.new(MultiJson.decode(json))
         @xml_request = xml_request
-        @request =  Hash.from_xml(xml_request)
+        @request =  Hashie::Rash.from_xml(xml_request)
         @action = action
       end
 
