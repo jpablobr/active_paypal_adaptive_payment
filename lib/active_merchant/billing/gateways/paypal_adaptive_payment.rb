@@ -261,25 +261,18 @@ module ActiveMerchant
             x.errorLanguage options[:error_language] ||= 'en_US'
           end
           x.actionType 'REFUND'
-          if options[:pay_key]
-            x.payKey options[:pay_key]
-          end
-          if options[:transaction_id]
-            x.payKey options[:transaction_id]
-          end
-          if options[:tracking_id]
-            x.trackingId options[:tracking_id]
-          end
-          x.cancelUrl options[:cancel_url]
-          x.returnUrl options[:return_url]
+          x.payKey options[:pay_key] if options[:pay_key]
+          x.payKey options[:transaction_id] if options[:transaction_id]
+          x.trackingId options[:tracking_id] if options[:tracking_id]
           x.currencyCode options[:currency_code] ||= 'USD'
           x.receiverList do |x|
             options[:receiver_list].each do |receiver|
               x.receiver do |x|
                 x.amount receiver[:amount]
-                x.paymentType receiver[:payment_type] ||= 'GOODS'
-                x.invoiceId receiver[:invoice_id] if receiver[:invoice_id]
+                # x.paymentType receiver[:payment_type] ||= 'GOODS' # API specifies "not used"
+                # x.invoiceId receiver[:invoice_id] if receiver[:invoice_id] # API specifies "not used"
                 x.email receiver[:email]
+                x.primary receiver[:primary] if receiver.key?(:primary)
               end
             end
           end if options[:receiver_list]
