@@ -282,7 +282,7 @@ module ActiveMerchant
                 x.email receiver[:email]
               end
             end
-          end
+          end if options[:receiver_list]
           x.feesPayer options[:fees_payer] ||= 'EACHRECEIVER'
         end
       end
