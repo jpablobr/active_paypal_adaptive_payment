@@ -33,9 +33,9 @@ module ActiveMerchant
       self.homepage_url = 'http://x.com/'
       self.display_name = 'Paypal Adaptive Payments'
 
-      def initialize(config = {})
-        requires!(config, :login, :password, :signature, :appid)
-        @config = config.dup
+      def initialize(options = {})
+        requires!(options, :login, :password, :signature, :appid)
+        @options = options.dup
         super
       end
 
@@ -377,10 +377,10 @@ module ActiveMerchant
         headers = {
           "X-PAYPAL-REQUEST-DATA-FORMAT" => "XML",
           "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON",
-          "X-PAYPAL-SECURITY-USERID" => @config[:login],
-          "X-PAYPAL-SECURITY-PASSWORD" => @config[:password],
-          "X-PAYPAL-SECURITY-SIGNATURE" => @config[:signature],
-          "X-PAYPAL-APPLICATION-ID" => @config[:appid],
+          "X-PAYPAL-SECURITY-USERID" => @options[:login],
+          "X-PAYPAL-SECURITY-PASSWORD" => @options[:password],
+          "X-PAYPAL-SECURITY-SIGNATURE" => @options[:signature],
+          "X-PAYPAL-APPLICATION-ID" => @options[:appid],
         }
         action_url(action)
         request = Net::HTTP::Post.new(@url.path)
@@ -401,7 +401,7 @@ module ActiveMerchant
       end
 
       def test?
-        @config[:test] || Base.gateway_mode == :test
+        @options[:test] || Base.gateway_mode == :test
       end
 
       def action_url(action)
