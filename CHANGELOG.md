@@ -1,21 +1,28 @@
-## 0 0.3.12 (2012-05-18)
-  - Added option displayMaxTotalAmount to build_preapproval_payment to display amount with paypal on payment (04b37c9) by eldoy
+## 0.3.14 (2012-07-06)
 
-## 0 0.3.12 (2012-05-02)
+  - Expose raw and request objects for easier logging / debugging (pull req #25) by saizai
+  - rm unusued refund fields (pull req #25) by saizai
+  - Also added: receiver_list is optional for refunds (refunds everything on that paykey if not specified) (pull req #25) by saizai
+  
+## 0.3.12 (2012-05-18)
+
+- Added option displayMaxTotalAmount to build_preapproval_payment to display amount with paypal on payment (04b37c9) by eldoy
+
+## 0.3.12 (2012-05-02)
 
   - Add displayOptions and receiverOptions support to
     SetPaymentOptionsRequest (Niels Ganser) by 597ecad
   
-## 0 0.3.11 (2012-04-28)
+## 0.3.11 (2012-04-28)
 
   - Added option :action_type to build_adaptive_payment_pay_request to enable delayed chained payments (3df6948) by eldoy
   
   
-## 0 0.3.10 (2012-03-30)
+## 0.3.10 (2012-03-30)
 
   - Added referrerCode in SetPaymentOptions request (by njvitto)
   
-## 0 0.3.3 (16/Nov/11)
+## 0.3.3 (16/Nov/11)
 
   - add functionality to allow a user to redirect to the correct URL
     when creating a pre-approval request. In addition, the
