@@ -33,9 +33,9 @@ module ActiveMerchant
       self.homepage_url = 'http://x.com/'
       self.display_name = 'Paypal Adaptive Payments'
 
-      def initialize(config = {})
-        requires!(config, :login, :password, :signature, :appid)
-        @config = config.dup
+      def initialize(options = {})
+        requires!(options, :login, :password, :signature, :appid)
+        @options = options.dup
         super
       end
 
@@ -92,7 +92,7 @@ module ActiveMerchant
       end
 
       def debug
-        "Url: #{@url}\n\n Request: #{@xml} \n\n Response: #{@response.json}"
+        {:url => @url, :request => @xml, :response => @response.json}
       end
 
       private
@@ -261,28 +261,21 @@ module ActiveMerchant
             x.errorLanguage options[:error_language] ||= 'en_US'
           end
           x.actionType 'REFUND'
-          if options[:pay_key]
-            x.payKey options[:pay_key]
-          end
-          if options[:transaction_id]
-            x.payKey options[:transaction_id]
-          end
-          if options[:tracking_id]
-            x.trackingId options[:tracking_id]
-          end
-          x.cancelUrl options[:cancel_url]
-          x.returnUrl options[:return_url]
+          x.payKey options[:pay_key] if options[:pay_key]
+          x.payKey options[:transaction_id] if options[:transaction_id]
+          x.trackingId options[:tracking_id] if options[:tracking_id]
           x.currencyCode options[:currency_code] ||= 'USD'
           x.receiverList do |x|
             options[:receiver_list].each do |receiver|
               x.receiver do |x|
                 x.amount receiver[:amount]
-                x.paymentType receiver[:payment_type] ||= 'GOODS'
-                x.invoiceId receiver[:invoice_id] if receiver[:invoice_id]
+                # x.paymentType receiver[:payment_type] ||= 'GOODS' # API specifies "not used"
+                # x.invoiceId receiver[:invoice_id] if receiver[:invoice_id] # API specifies "not used"
                 x.email receiver[:email]
+                x.primary receiver[:primary] if receiver.key?(:primary)
               end
             end
-          end
+          end if options[:receiver_list]
           x.feesPayer options[:fees_payer] ||= 'EACHRECEIVER'
         end
       end
@@ -377,17 +370,17 @@ module ActiveMerchant
       end
 
       def commit(action, data)
-        @response = AdaptivePaymentResponse.new(post_through_ssl(action, data))
+        @response = AdaptivePaymentResponse.new(post_through_ssl(action, data), data, action)
       end
 
       def post_through_ssl(action, parameters = {})
         headers = {
           "X-PAYPAL-REQUEST-DATA-FORMAT" => "XML",
           "X-PAYPAL-RESPONSE-DATA-FORMAT" => "JSON",
-          "X-PAYPAL-SECURITY-USERID" => @config[:login],
-          "X-PAYPAL-SECURITY-PASSWORD" => @config[:password],
-          "X-PAYPAL-SECURITY-SIGNATURE" => @config[:signature],
-          "X-PAYPAL-APPLICATION-ID" => @config[:appid],
+          "X-PAYPAL-SECURITY-USERID" => @options[:login],
+          "X-PAYPAL-SECURITY-PASSWORD" => @options[:password],
+          "X-PAYPAL-SECURITY-SIGNATURE" => @options[:signature],
+          "X-PAYPAL-APPLICATION-ID" => @options[:appid],
         }
         action_url(action)
         request = Net::HTTP::Post.new(@url.path)
@@ -408,7 +401,7 @@ module ActiveMerchant
       end
 
       def test?
-        @config[:test] || Base.gateway_mode == :test
+        @options[:test] || Base.gateway_mode == :test
       end
 
       def action_url(action)
