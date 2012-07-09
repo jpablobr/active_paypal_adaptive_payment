@@ -1,3 +1,7 @@
+## 0.3.15 (2012-07-09)
+
+  - PayPal requests headers should be case insensitive fix. (pull req #27) by dmitriybudnik
+  
 ## 0.3.14 (2012-07-06)
 
   - Expose raw and request objects for easier logging / debugging (pull req #25) by saizai

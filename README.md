@@ -182,6 +182,7 @@ xml request, raw json response and the URL of the endpoint.
 * Vidar Eldøy (https://github.com/eldoy)
 * Niels Ganser (https://github.com/Nielsomat)
 * saizai (Sai) (https://github.com/saizai)
+* Dmtiriy Budnik (https://github.com/dmitriybudnik)
 
 ## Other previous contributors where some code was taken from.
 
