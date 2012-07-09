@@ -28,15 +28,3 @@ module Hashie
 
   end
 end
-
-module Net
-  module HTTPHeader
-    def []= key, val
-      unless val
-        @header.delete key
-        return val
-      end
-      @header[key] = [val]
-    end
-  end
-end
