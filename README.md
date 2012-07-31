@@ -49,10 +49,13 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
       :max_amount => "maxTotalAmountOfAllPayments",
       :maxNumberOfPayments => "maxNumberOfPayments" )
 
+    # For redirecting the customer to the actual paypal site to finish the payment.
+    redirect_to (gateway.redirect_pre_approval_url_for(response["payKey"]))
+
 ### Cancel pre-approved payment
 
      gateway.cancel_preapproval(:preapproval_key => "preapprovalkey")
-
+ 
 ### Chained payments
 
     def checkout
@@ -70,7 +73,7 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
         :receiver_list => recipients
       )
 
-      # for redirecting the customer to the actual paypal site to finish the payment.
+      # For redirecting the customer to the actual paypal site to finish the payment.
       redirect_to (gateway.redirect_url_for(response["payKey"]))
     end
 
