@@ -49,6 +49,13 @@ See [iAuction: An Adaptive Payments Tutorial Featuring Parallel Payments](https:
       :max_amount => "maxTotalAmountOfAllPayments",
       :maxNumberOfPayments => "maxNumberOfPayments" )
 
+      response = gateway.setup_purchase(
+        :return_url => url_for(:action => 'action', :only_path => false),
+        :cancel_url => url_for(:action => 'action', :only_path => false),
+        :notify_url => url_for(:action => 'notify_action', :only_path => false),
+        :receiver_list => recipients
+      )
+
     # For redirecting the customer to the actual paypal site to finish the payment.
     redirect_to (gateway.redirect_pre_approval_url_for(response["payKey"]))
 
