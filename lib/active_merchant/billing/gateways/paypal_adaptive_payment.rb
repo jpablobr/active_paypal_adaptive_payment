@@ -160,7 +160,11 @@ module ActiveMerchant
             x.detailLevel 'ReturnAll'
             x.errorLanguage opts[:error_language] ||= 'en_US'
           end
-          x.payKey opts[:pay_key]
+          if opts[:pay_key].present?
+            x.payKey opts[:pay_key]
+          elsif opts[:transaction_id].present?
+            x.payKey opts[:transaction_id]
+          end
         end
       end
 
