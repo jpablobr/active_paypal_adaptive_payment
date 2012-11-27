@@ -1,3 +1,7 @@
+## 0.3.16 (2012-11-27)
+
+  - Also allow details_for_payment to find a transaction by transaction_id. (pull req #39) by https://github.com/Sjors
+
 ## 0.3.15 (2012-07-09)
 
   - PayPal requests headers should be case insensitive fix. (pull req #27) by dmitriybudnik
