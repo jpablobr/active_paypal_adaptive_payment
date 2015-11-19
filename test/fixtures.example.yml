@@ -6,6 +6,15 @@ credentials:
 
 paydetails_options:
   pay_key: AP-49N53304XXkjh2374P
+  :sender:
+    :shipping_address:
+      :name: John
+      :street1: 17 Magneson St
+      :street2: building 1
+      :city: San Jose
+      :state: CA
+      :zip: 12345
+      :country: US
 
 recipients: &recipients
   - :email:  seller_1313041935_biz@gmail.com

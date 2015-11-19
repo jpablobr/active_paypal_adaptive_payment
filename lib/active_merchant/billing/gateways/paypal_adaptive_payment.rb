@@ -210,6 +210,17 @@ module ActiveMerchant
             x.sharePhoneNumber opts[:sender][:share_phone_number] if opts[:sender][:share_phone_number]
             x.requireShippingAddressSelection opts[:sender][:require_shipping_address_selection] if opts[:sender][:require_shipping_address_selection]
             x.referrerCode opts[:sender][:referrerCode] if opts[:sender][:referrerCode]
+            if opts[:sender][:shipping_address]
+              x.shippingAddress do |x|
+                x.addresseeName opts[:sender][:shipping_address][:name] if opts[:sender][:shipping_address][:name]
+                x.street1 opts[:sender][:shipping_address][:street1] if opts[:sender][:shipping_address][:street1]
+                x.street2 opts[:sender][:shipping_address][:street2] if opts[:sender][:shipping_address][:street2]
+                x.city opts[:sender][:shipping_address][:city] if opts[:sender][:shipping_address][:city]
+                x.state opts[:sender][:shipping_address][:state] if opts[:sender][:shipping_address][:state]
+                x.zip opts[:sender][:shipping_address][:zip] if opts[:sender][:shipping_address][:zip]
+                x.country opts[:sender][:shipping_address][:country] if opts[:sender][:shipping_address][:country]
+              end
+            end
           end
           unless opts[:display_options].blank?
             x.displayOptions do |x|
