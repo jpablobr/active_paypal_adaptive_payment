@@ -19,3 +19,12 @@ pay_options:
   :return_url:  http://example.com/return
   :cancel_url: http://example.com/cancel
   :receiver_list: *recipients
+  :sender_options:
+    :shipping_address:
+      :name: John
+      :street1: 17 Magneson St
+      :street2: building 1
+      :city: San Jose
+      :state: CA
+      :zip: 12345
+      :country: US
